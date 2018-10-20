@@ -56,32 +56,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>主页</span>
+                    <span>HOME</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>标签</span>
+                    <span>TAGS</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>存档</span>
+                    <span>ARCHIVES</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>关于</span>
+                    <span>ABOUT</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>搜索</span>
+                    <span>SEARCH</span>
                 </a>
             </li>
             
@@ -100,7 +100,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">搜索</span>
+            <span id="begin-search">search</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -123,10 +123,10 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2018-10-20 16:07:07</span></span>
+        <span class="attr">Post：<span>2018-10-20 16:16:41</span></span>
         
         </span>
-        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -136,7 +136,7 @@
 </blockquote>
 <h1 id="首先安装Jenkins"><a href="#首先安装Jenkins" class="headerlink" title="首先安装Jenkins"></a>首先安装Jenkins</h1><p>Jenkins是个java程序所以需要先安装jdk</p>
 <h2 id="Jdk安装"><a href="#Jdk安装" class="headerlink" title="Jdk安装"></a>Jdk安装</h2><ol>
-<li>这里先在 winsdows 上下载 jdk-8u181-linux-x64.gz <a href="https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html" target="_blank" rel="noopener">连接</a>；<br><img src="https://img-blog.csdn.net/20181020145136609?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里需要登录oracle才能下载"></li>
+<li>这里先在 winsdows 上下载 jdk-8u181-linux-x64.gz <a href="https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html" target="_blank" rel="noopener">连接</a>；<br><img src="/2018/10/20/Linux上用Jenkins执行shell/1.png" alt="这里需要登录oracle才能下载"></li>
 <li>然后通过winscp拖到linux上的 /usr/local 路径下；</li>
 <li><p>然后解压安装；</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# tar -xf jdk-8u121-linux-x64.tar.gz</span><br><span class="line">[root@localhost /]# mv jdk1.8.0_121/ /usr/local/jdk  &amp;&amp; rm -rf jdk-8u121-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
@@ -168,19 +168,19 @@
 </li>
 </ul>
 <h2 id="自定义指定端口9000启动jenkins"><a href="#自定义指定端口9000启动jenkins" class="headerlink" title="自定义指定端口9000启动jenkins"></a>自定义指定端口9000启动jenkins</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# java -jar jenkins.war --httpPort=9000</span><br></pre></td></tr></table></figure>
-<h2 id="浏览器登录"><a href="#浏览器登录" class="headerlink" title="浏览器登录"></a>浏览器登录</h2><p>地址栏输入 IP:9000 ，例：192.168.2.14：9000<br><img src="https://img-blog.csdn.net/20181020152222652?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<h2 id="浏览器登录"><a href="#浏览器登录" class="headerlink" title="浏览器登录"></a>浏览器登录</h2><p>地址栏输入 IP:9000 ，例：192.168.2.14：9000<br><img src="/2018/10/20/Linux上用Jenkins执行shell/2.png" alt="在这里插入图片描述"></p>
 <p><strong>根据提示信息找到初始密码输入登录</strong></p>
-<p><img src="https://img-blog.csdn.net/2018102015290267?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<p><img src="/2018/10/20/Linux上用Jenkins执行shell/3.png" alt="在这里插入图片描述"></p>
 <p><strong>默认选择 安装推荐插件</strong></p>
-<h2 id="修改管理员密码"><a href="#修改管理员密码" class="headerlink" title="修改管理员密码"></a>修改管理员密码</h2><p>上一步过后会有个创建一个管理员的页面，但是我这里不好使，所以就登陆admin，然后修改admin密码<br><img src="https://img-blog.csdn.net/20181020154025567?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<h2 id="修改管理员密码"><a href="#修改管理员密码" class="headerlink" title="修改管理员密码"></a>修改管理员密码</h2><p>上一步过后会有个创建一个管理员的页面，但是我这里不好使，所以就登陆admin，然后修改admin密码<br><img src="/2018/10/20/Linux上用Jenkins执行shell/4.png" alt="在这里插入图片描述"></p>
 <p><strong>拖到最下面修改密码</strong></p>
-<p><img src="https://img-blog.csdn.net/20181020154115562?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<p><img src="/2018/10/20/Linux上用Jenkins执行shell/5.png" alt="在这里插入图片描述"></p>
 <p><strong>然后可以注销后用修改的密码登陆了</strong></p>
-<h2 id="创建一个执行shell的任务"><a href="#创建一个执行shell的任务" class="headerlink" title="创建一个执行shell的任务"></a>创建一个执行shell的任务</h2><p><img src="https://img-blog.csdn.net/20181020154249279?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdn.net/20181020154321284?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<h2 id="创建一个执行shell的任务"><a href="#创建一个执行shell的任务" class="headerlink" title="创建一个执行shell的任务"></a>创建一个执行shell的任务</h2><p><img src="/2018/10/20/Linux上用Jenkins执行shell/6.png" alt="在这里插入图片描述"><br><img src="/2018/10/20/Linux上用Jenkins执行shell/7.png" alt="在这里插入图片描述"></p>
 <p><strong>然后下一步拖到最下面选择构建下拉框选</strong></p>
-<p><img src="https://img-blog.csdn.net/20181020154614217?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdn.net/20181020154756904?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
-<h2 id="构建刚创建的Jenkins任务"><a href="#构建刚创建的Jenkins任务" class="headerlink" title="构建刚创建的Jenkins任务"></a>构建刚创建的Jenkins任务</h2><p><img src="https://img-blog.csdn.net/20181020154850489?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
-<h2 id="查看执行结果"><a href="#查看执行结果" class="headerlink" title="查看执行结果"></a>查看执行结果</h2><p><img src="https://img-blog.csdn.net/20181020154946991?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdn.net/20181020155011703?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<p><img src="/2018/10/20/Linux上用Jenkins执行shell/8.png" alt="在这里插入图片描述"><br><img src="/2018/10/20/Linux上用Jenkins执行shell/9.png" alt="在这里插入图片描述"></p>
+<h2 id="构建刚创建的Jenkins任务"><a href="#构建刚创建的Jenkins任务" class="headerlink" title="构建刚创建的Jenkins任务"></a>构建刚创建的Jenkins任务</h2><p><img src="/2018/10/20/Linux上用Jenkins执行shell/10.png" alt="在这里插入图片描述"></p>
+<h2 id="查看执行结果"><a href="#查看执行结果" class="headerlink" title="查看执行结果"></a>查看执行结果</h2><p><img src="/2018/10/20/Linux上用Jenkins执行shell/11.png" alt="在这里插入图片描述"><br><img src="/2018/10/20/Linux上用Jenkins执行shell/12.png" alt="在这里插入图片描述"></p>
 <p><strong>出现 Finished: SUCCESS 恭喜，即为执行成功</strong></p>
 
         
