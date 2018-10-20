@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#首先安装Jenkins"><span class="toc-text">首先安装Jenkins</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jdk安装"><span class="toc-text">Jdk安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Jenkins"><span class="toc-text">安装Jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打开防火墙"><span class="toc-text">打开防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义指定端口9000启动jenkins"><span class="toc-text">自定义指定端口9000启动jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器登录"><span class="toc-text">浏览器登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改管理员密码"><span class="toc-text">修改管理员密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个执行shell的任务"><span class="toc-text">创建一个执行shell的任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建刚创建的Jenkins任务"><span class="toc-text">构建刚创建的Jenkins任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看执行结果"><span class="toc-text">查看执行结果</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Jenkins"><span class="toc-text">安装Jenkins</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jdk安装"><span class="toc-text">Jdk安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Jenkins-1"><span class="toc-text">安装Jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打开防火墙"><span class="toc-text">打开防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义指定端口9000启动jenkins"><span class="toc-text">自定义指定端口9000启动jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器登录"><span class="toc-text">浏览器登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改管理员密码"><span class="toc-text">修改管理员密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个执行shell的任务"><span class="toc-text">创建一个执行shell的任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建刚创建的Jenkins任务"><span class="toc-text">构建刚创建的Jenkins任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看执行结果"><span class="toc-text">查看执行结果</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -134,7 +134,7 @@
         <blockquote>
 <p>执行环境： Centos 7，jdk8</p>
 </blockquote>
-<h1 id="首先安装Jenkins"><a href="#首先安装Jenkins" class="headerlink" title="首先安装Jenkins"></a>首先安装Jenkins</h1><p>Jenkins是个java程序所以需要先安装jdk</p>
+<h1 id="安装Jenkins"><a href="#安装Jenkins" class="headerlink" title="安装Jenkins"></a>安装Jenkins</h1><p>Jenkins是个java程序所以需要先安装jdk</p>
 <h2 id="Jdk安装"><a href="#Jdk安装" class="headerlink" title="Jdk安装"></a>Jdk安装</h2><ol>
 <li>这里先在 winsdows 上下载 jdk-8u181-linux-x64.gz <a href="https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html" target="_blank" rel="noopener">连接</a>；<br><img src="/2018/10/20/Linux上用Jenkins执行shell/1.png" alt="这里需要登录oracle才能下载"></li>
 <li>然后通过winscp拖到linux上的 /usr/local 路径下；</li>
@@ -145,7 +145,7 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@localhost:~# vim /etc/profile</span><br><span class="line">JAVA_HOME=<span class="regexp">/usr/</span>local/jdk/</span><br><span class="line">PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line"><span class="keyword">export</span> JAVA_HOME PATH CLASSPATH </span><br><span class="line">root@localhost:/usr/local# source /etc/profile</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="安装Jenkins"><a href="#安装Jenkins" class="headerlink" title="安装Jenkins"></a>安装Jenkins</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war</span><br></pre></td></tr></table></figure>
+<h2 id="安装Jenkins-1"><a href="#安装Jenkins-1" class="headerlink" title="安装Jenkins"></a>安装Jenkins</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war</span><br></pre></td></tr></table></figure>
 <h2 id="打开防火墙"><a href="#打开防火墙" class="headerlink" title="打开防火墙"></a>打开防火墙</h2><p>需要注意的是，查看防火墙是否打开，打开的话需要放开端口9000或者直接关闭防火墙</p>
 <ul>
 <li><p>查看防火墙状态</p>
