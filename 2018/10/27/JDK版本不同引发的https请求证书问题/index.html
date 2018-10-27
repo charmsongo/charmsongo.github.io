@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        JDK版本不同引发的https请求证书问题 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> do interesting things with interesting people </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>charmsongo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题解决"><span class="toc-text">问题解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题分析"><span class="toc-text">问题分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决过程"><span class="toc-text">解决过程</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> do interesting things with interesting people </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        JDK版本不同引发的https请求证书问题
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-27 09:39:06</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>首先，服务器上跑着一个接口工程，环境是jdk8，为https请求（证书认证，但这里绕过了证书）；客户端通过https调用接口，环境是jdk7，请求时报如下错：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javax.net.ssl.SSLHandshakeException: Received fatal alert: handshake_failure</span><br></pre></td></tr></table></figure></p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>这个问题出现的原因是因为开发时，我客户端用的jdk8测试，没有出现问题，然后客户那是jdk7，所以出现了这个问题，这是由于客户端与服务器所使用的SSL/TLS版本不一致。服务器使用的TLS版本高，而客户端支持的TLS版本低。<strong>Java 8默认支持TLSv1.2版本</strong>。</p>
+<h2 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h2><p><strong>这里有两种解决办法</strong></p>
+<ol>
+<li>客户端升级为jdk8(让客户改不怎么现实，这种方法先pass)</li>
+<li><p>构造证书new SSLConnectionSocketFactory对象时加上两个属性</p>
+<p><em>这里说下第二种解决方法，下面 SSLConnectionSocketFactory 上的注释</em><br>get请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * get请求</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> url</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> timeout 超时时间（毫秒）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> code</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">doGet</span><span class="params">(String url, <span class="keyword">int</span> timeout, String user, String code)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		CloseableHttpClient client = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* 相信自己的CA和所有自签名的证书 */</span></span><br><span class="line">		SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(<span class="keyword">new</span> TrustSelfSignedStrategy()).build();</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* 不做证书校验 */</span></span><br><span class="line">		sslcontext.init(<span class="keyword">null</span>, <span class="keyword">new</span> TrustManager[] &#123; truseAllManager &#125;, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* 添加两个属性 new String[]&#123;"TLSv1.2"&#125; 和 null */</span></span><br><span class="line">		SSLConnectionSocketFactory sslsf = <span class="keyword">new</span> SSLConnectionSocketFactory(sslcontext,<span class="keyword">new</span> String[]&#123;<span class="string">"TLSv1.2"</span>&#125;, <span class="keyword">null</span>, <span class="keyword">new</span> HostnameVerifier() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">verify</span><span class="params">(String hostname, SSLSession session)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		client = HttpClients.custom().setSSLSocketFactory(sslsf).build();</span><br><span class="line"></span><br><span class="line">		<span class="comment">//发送get请求</span></span><br><span class="line">		HttpGet request = <span class="keyword">new</span> HttpGet(url);</span><br><span class="line">		request.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"application/json;charset=UTF-8"</span>);</span><br><span class="line">		request.setHeader(<span class="string">"User"</span>, user);</span><br><span class="line">		request.setHeader(<span class="string">"Code"</span>, code);</span><br><span class="line">		RequestConfig requestConfig = RequestConfig.custom()</span><br><span class="line">				.setConnectTimeout(timeout)</span><br><span class="line">				.setSocketTimeout(timeout).build();</span><br><span class="line">		request.setConfig(requestConfig);</span><br><span class="line">		HttpResponse response = client.execute(request);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**读取服务器返回过来的json字符串数据**/</span></span><br><span class="line">		String strResult = EntityUtils.toString(response.getEntity());</span><br><span class="line">		<span class="keyword">return</span> strResult;</span><br><span class="line">	&#125;<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>post请求<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * post请求（用于请求json格式的参数）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> url 请求路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> params 请求参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> user 用户</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> code 秘钥</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">doPost</span><span class="params">(String url, String params, String user, String code)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">	CloseableHttpClient httpclient = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 相信自己的CA和所有自签名的证书 */</span></span><br><span class="line">	SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(<span class="keyword">new</span> TrustSelfSignedStrategy()).build();</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 不做证书校验 */</span></span><br><span class="line">	sslcontext.init(<span class="keyword">null</span>, <span class="keyword">new</span> TrustManager[] &#123; truseAllManager &#125;, <span class="keyword">null</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 添加两个属性 new String[]&#123;"TLSv1.2"&#125; 和 null */</span></span><br><span class="line">	SSLConnectionSocketFactory sslsf = <span class="keyword">new</span> SSLConnectionSocketFactory(sslcontext,<span class="keyword">new</span> String[]&#123;<span class="string">"TLSv1.2"</span>&#125;, <span class="keyword">null</span>, <span class="keyword">new</span> HostnameVerifier() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">verify</span><span class="params">(String hostname, SSLSession session)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();</span><br><span class="line">	HttpPost httpPost = <span class="keyword">new</span> HttpPost(url);<span class="comment">// 创建httpPost</span></span><br><span class="line">	httpPost.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"application/json;charset=UTF-8"</span>);</span><br><span class="line">	httpPost.setHeader(<span class="string">"User"</span>, user);</span><br><span class="line">	httpPost.setHeader(<span class="string">"Code"</span>, code);</span><br><span class="line">	String charSet = <span class="string">"UTF-8"</span>;</span><br><span class="line">	StringEntity entity = <span class="keyword">new</span> StringEntity(params, charSet);</span><br><span class="line">	httpPost.setEntity(entity);</span><br><span class="line">	CloseableHttpResponse response = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">		response = httpclient.execute(httpPost);</span><br><span class="line">			HttpEntity responseEntity = response.getEntity();</span><br><span class="line">			String jsonString = EntityUtils.toString(responseEntity);</span><br><span class="line">			<span class="keyword">return</span> jsonString;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (response != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				response.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			httpclient.close();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>具体代码请到 github 自行<a href="https://github.com/charmsongo/ifctest" target="_blank" rel="noopener">下载</a></p>
+<p>如果这里不能解决您的问题请参考如下链接</p>
+<p><a href="https://blog.csdn.net/taiyangdao/article/details/54707184" target="_blank" rel="noopener">链接1</a><a href="https://blog.csdn.net/fsafs168/article/details/82020959" target="_blank" rel="noopener">链接2</a></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.csdn.net/qq_29175301">CSDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://my.oschina.net/charmsongo">OSChina</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.cnblogs.com/charmsongo/">博客园</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</html>
