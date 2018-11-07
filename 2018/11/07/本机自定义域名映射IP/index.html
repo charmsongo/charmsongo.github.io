@@ -11,7 +11,7 @@
 
     <title>
         
-        charmsongo
+        本机自定义域名映射IP - charmsongo
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#wins和linux设置"><span class="toc-text">wins和linux设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-wins修改hosts文件"><span class="toc-text">1.wins修改hosts文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-linux修改hosts文件"><span class="toc-text">2.linux修改hosts文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-访问方式"><span class="toc-text">3.访问方式</span></a></li></ol></li></ol>
+</div>
+    
 </div>
 
 
@@ -111,126 +115,40 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2018-11-07</div>
-        <div class="post-info">
-            <a href="/2018/11/07/本机自定义域名映射IP/">
-                <h3>
-                    本机自定义域名映射IP
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2018-10-27</div>
-        <div class="post-info">
-            <a href="/2018/10/27/java中文件如何加密压缩/">
-                <h3>
-                    java中文件如何加密压缩?
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2018-10-27</div>
-        <div class="post-info">
-            <a href="/2018/10/27/JDK版本不同引发的https请求证书问题/">
-                <h3>
-                    JDK版本不同引发的https请求证书问题
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2018-10-20</div>
-        <div class="post-info">
-            <a href="/2018/10/20/Linux上用Jenkins执行shell/">
-                <h3>
-                    Linux上用Jenkins执行shell
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2018-10-12</div>
-        <div class="post-info">
-            <a href="/2018/10/12/对待金钱的思维/">
-                <h3>
-                    对待金钱的思维
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2018-10-07</div>
-        <div class="post-info">
-            <a href="/2018/10/07/my-blog-s-format-has-change/">
-                <h3>
-                    my blog's format has change
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2018-09-22</div>
-        <div class="post-info">
-            <a href="/2018/09/22/你好-Hexo/">
-                <h3>
-                    你好,Hexo
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2018-09-16</div>
-        <div class="post-info">
-            <a href="/2018/09/16/hello-world/">
-                <h3>
-                    Hello World
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-</div>
-<ul class="pager">
-    
-    
-</ul>
 
+
+<div class="post-container">
+    <div class="post-title">
+        本机自定义域名映射IP
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-11-07 21:47:17</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="wins和linux设置"><a href="#wins和linux设置" class="headerlink" title="wins和linux设置"></a>wins和linux设置</h1><p>其实设置很简单，修改 hosts 文件就可以了，下面详细介绍</p>
+<h2 id="1-wins修改hosts文件"><a href="#1-wins修改hosts文件" class="headerlink" title="1.wins修改hosts文件"></a>1.wins修改hosts文件</h2><p>路径如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\drivers\etc\hosts</span><br></pre></td></tr></table></figure></p>
+<p>打开文件在最后添加如下内容，保存即可即时生效<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span> charmsongo.com</span><br></pre></td></tr></table></figure></p>
+<p>最可能遇到的问题就是修改后保存问题了，可以参考 <a href="https://www.jb51.net/diannaojichu/133538.html" target="_blank" rel="noopener">链接</a></p>
+<h2 id="2-linux修改hosts文件"><a href="#2-linux修改hosts文件" class="headerlink" title="2.linux修改hosts文件"></a>2.linux修改hosts文件</h2><p>路径如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/hosts</span><br></pre></td></tr></table></figure></p>
+<p>使用命令「vi /etc/hosts」,同样在最后添加如下内容,然后保存即可<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span> charmsongo.com</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-访问方式"><a href="#3-访问方式" class="headerlink" title="3.访问方式"></a>3.访问方式</h2><p>访问方式的改变就更简单了，把原来 URL 中的 IP 换成改的域名即可，这里以wins上为例，如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#修改前url</span><br><span class="line">https:<span class="comment">//192.168.2.1</span></span><br><span class="line"></span><br><span class="line">#修改后url</span><br><span class="line">https:<span class="comment">//charmsongo.com/</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说在最后，如果有什么问题，请留言，我会尽量在第一时间给您答复</p>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
     </div>
 </div>
 
@@ -331,7 +249,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
