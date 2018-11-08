@@ -56,32 +56,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>HOME</span>
+                    <span>主页</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>TAGS</span>
+                    <span>标签</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>ARCHIVES</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>ABOUT</span>
+                    <span>关于</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>SEARCH</span>
+                    <span>搜索</span>
                 </a>
             </li>
             
@@ -100,7 +100,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">search</span>
+            <span id="begin-search">搜索</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -123,22 +123,21 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2018-11-08 20:51:32</span></span>
+        <span class="attr">发布于：<span>2018-11-08 20:51:32</span></span>
         
-        <span class="attr">Tags：/
+        <span class="attr">标签：/
         
         <a class="tag" href="/tags/#linux / oracle" title="linux / oracle">linux / oracle</a>
         <span>/</span>
         
         
         </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
     <div class="post-content ">
-        <p>@<a href="终于等到你">TOC</a></p>
-<h1 id="oracle连接数详解"><a href="#oracle连接数详解" class="headerlink" title="oracle连接数详解"></a>oracle连接数详解</h1><p>oracle连接数默认是150，当同一时间连接数大于这个数的时候就会报错，现在的解决办法为增大oracle的连接数，从150改为1500，操作如下</p>
+        <h1 id="oracle连接数详解"><a href="#oracle连接数详解" class="headerlink" title="oracle连接数详解"></a>oracle连接数详解</h1><p>oracle连接数默认是150，当同一时间连接数大于这个数的时候就会报错，现在的解决办法为增大oracle的连接数，从150改为1500，操作如下</p>
 <h2 id="1-修改前问题解决"><a href="#1-修改前问题解决" class="headerlink" title="1.修改前问题解决"></a>1.修改前问题解决</h2><p>如果已经报超过连接数错误后的话，是登录不上oracle的，所以需要用命令 lsof -i:1521 查看，所有占用这个端口的进程，然后用 kill -9 PID 杀死这些进程，有可能会很多，不想一个一个杀死可以百度谷歌方法 </p>
 <h2 id="2-登录oracle"><a href="#2-登录oracle" class="headerlink" title="2.登录oracle"></a>2.登录oracle</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#切换到oracle，再登录</span><br><span class="line">su - oracle</span><br><span class="line">sqlplus / <span class="keyword">as</span> sysdba</span><br></pre></td></tr></table></figure>
 <h2 id="3-查询连接数，并修改"><a href="#3-查询连接数，并修改" class="headerlink" title="3.查询连接数，并修改"></a>3.查询连接数，并修改</h2><h3 id="3-1使用命令-show-parameter-processes"><a href="#3-1使用命令-show-parameter-processes" class="headerlink" title="3.1使用命令 show parameter processes;"></a>3.1使用命令 show parameter processes;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; show parameter processes;</span><br><span class="line">NAME                                 TYPE        VALUE</span><br><span class="line">------------------------------------ ----------- ------------------------------</span><br><span class="line">aq_tm_processes                      integer     <span class="number">1</span></span><br><span class="line">db_writer_processes                  integer     <span class="number">1</span></span><br><span class="line">gcs_server_processes                 integer     <span class="number">0</span></span><br><span class="line">global_txn_processes                 integer     <span class="number">1</span></span><br><span class="line">job_queue_processes                  integer     <span class="number">1000</span></span><br><span class="line">log_archive_max_processes            integer     <span class="number">4</span></span><br><span class="line">processes                            integer     <span class="number">150</span></span><br></pre></td></tr></table></figure>
