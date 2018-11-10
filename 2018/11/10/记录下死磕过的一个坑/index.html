@@ -11,7 +11,7 @@
 
     <title>
         
-        对待金钱的思维 - charmsongo
+        记录下死磕过的一个坑 - charmsongo
         
     </title>
 
@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-修改web-xml"><span class="toc-text">1.修改web.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-404页面注意问题"><span class="toc-text">2.404页面注意问题</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -119,11 +119,17 @@
 
 <div class="post-container">
     <div class="post-title">
-        对待金钱的思维
+        记录下死磕过的一个坑
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2018-10-12 22:04:55</span></span>
+        <span class="attr">Post：<span>2018-11-10 11:39:39</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#java / tomcat / web.xml / 404" title="java / tomcat / web.xml / 404">java / tomcat / web.xml / 404</a>
+        <span>/</span>
+        
         
         </span>
         <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
@@ -131,15 +137,15 @@
 </span>
     </div>
     <div class="post-content ">
-        <p><strong>穷人思维和富人思维</strong></p>
-<ul>
-<li>1.人越缺什么就会看重什么，越不缺什么就会看的越轻。</li>
-<li>2.穷人花钱买东西钱总是会先考虑自己还有多少钱，如果不够就不买了，如果买的话如何才能买到最实惠的东西，省钱思维；富人花钱买东西首先想到的是我想要什么，这个东西对我来说有什么用，是不是必须得，目标导向型。</li>
-<li>3.穷人思维考虑做一件事情的时候总是会忽略时间成本，喜欢用时间来换金钱，感觉多花些时间来少掏些金钱就是赚了。</li>
-<li>4.夫人思维花钱无外乎两件事情没意识为了赚钱，二是为了享受。</li>
-<li>5.减少无意义的频繁决策，节省宝贵的精力，用在有意义的事情上。</li>
-<li>6.开拓自己的视野，知道是一码事，做到是另一码事。</li>
-</ul>
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>最近公司项目提了个很正常的需求，为什么说是很正常的需求呢，保守点说，大多数的项目都会默认有这样的功能，那就是tomcat指定404页面，具体情况请听我再啰嗦啰嗦。有这么一场景，有人想攻击一家的项目，但是攻击前需要了解该公司项目的具体组成部分才可以进行真正的攻击吧，但是我也不知道该项目都有哪些目录？目录下有哪些文件？可以用笨方法就是去试，用一个大概常用的路径去访问该项目地址，比如ip/项目名/xxx,不存在的路径会看到默认的404页面会显示tomcat的版本和其它的一些信息，敏感信息会暴露，有点危险，所以我公司不想让别人看到这些，那就需要指定一个页面，找不到的路径都要转发这个页面。</p>
+<h2 id="1-修改web-xml"><a href="#1-修改web-xml" class="headerlink" title="1.修改web.xml"></a>1.修改web.xml</h2><p>修改的文件路径如下，只要放在tomcat下的都走这个配置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*/*/</span>tomcat/conf/web.xml</span><br></pre></td></tr></table></figure></p>
+<p>在web.xml文件最后添加内容如下，error-code是浏览器状态码为404就转发404.jsp页面，这里需要注意一下，我就载在了这里，location是当前运行项目的下的路径，通俗点讲就是，一个项目名为songo，那么404.jsp页面就要放在songo项目下，对应的路径就是/songo/404.jsp,其实我也不知道为什么是这样设置，但是就是这样好使了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    &lt;error-page&gt;</span><br><span class="line">    &lt;error-code&gt;<span class="number">404</span>&lt;<span class="regexp">/error-code&gt;</span></span><br><span class="line"><span class="regexp">    &lt;location&gt;/</span><span class="number">404.</span>jsp&lt;<span class="regexp">/location&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>error-page&gt;</span><br><span class="line">&lt;<span class="regexp">/web-app&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>这样的话就有个问题，如果tomcat下有多个项目，那每个项目根下都要放一个相同的404.jsp页面，如果您有什么更好的办法欢迎留言</strong></p>
+<h2 id="2-404页面注意问题"><a href="#2-404页面注意问题" class="headerlink" title="2.404页面注意问题"></a>2.404页面注意问题</h2><p>404.jsp需要添加2行内容，如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=gbk"</span> pageEncoding=<span class="string">"gbk"</span> isErrorPage=<span class="string">"true"</span>%&gt;</span><br><span class="line">&lt;%response.setStatus(HttpServletResponse.SC_OK);%&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>这2行主要是告诉浏览器访问服务器不存在的资源跳转的错误处理页面，但是返回正常的状态码，并且正常显示页面内容</strong><br>另外，具体页面请到 github 自行<a href="https://github.com/charmsongo/404page" target="_blank" rel="noopener">下载</a></p>
+<blockquote>
+<p>说在最后，如果有哪里有问题或写的不对的，请留言，我会尽量在第一时间给您答复</p>
+</blockquote>
 
         
         <br />
