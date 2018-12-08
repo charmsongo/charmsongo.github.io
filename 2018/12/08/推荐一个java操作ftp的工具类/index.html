@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="charmsongo">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        推荐一个java操作ftp的工具类 - charmsongo
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> do interesting things with interesting people </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>charmsongo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-导入jar包"><span class="toc-text">1 导入jar包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-工具类中主要方法"><span class="toc-text">2 工具类中主要方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-登陆ftp"><span class="toc-text">2.1 登陆ftp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-获取远程文件目录"><span class="toc-text">2.2 获取远程文件目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-上传文件"><span class="toc-text">2.3 上传文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-下载文件"><span class="toc-text">2.4 下载文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-源码"><span class="toc-text">3 源码</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> do interesting things with interesting people </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        推荐一个java操作ftp的工具类
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-12-08 11:12:20</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#java" title="java">java</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#ftp" title="ftp">ftp</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>作为经常使用电脑整理文件的童鞋，应该都使用过从ftp服务器上传下载文件，那么今天就了解下如何通过java程序操作ftp服务的文件</p>
+<blockquote>
+<p>首先你要知道ftp的ip，路径，端口，有操作权限的账号和密码</p>
+</blockquote>
+<h2 id="1-导入jar包"><a href="#1-导入jar包" class="headerlink" title="1 导入jar包"></a>1 导入jar包</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commons-net<span class="number">-3.6</span>.jar</span><br></pre></td></tr></table></figure>
+<p>这个jar包用来设置编码，经过测试，不加也可用</p>
+<h2 id="2-工具类中主要方法"><a href="#2-工具类中主要方法" class="headerlink" title="2 工具类中主要方法"></a>2 工具类中主要方法</h2><h3 id="2-1-登陆ftp"><a href="#2-1-登陆ftp" class="headerlink" title="2.1 登陆ftp"></a>2.1 登陆ftp</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证登录</span></span><br><span class="line"><span class="comment"> * @param ip</span></span><br><span class="line"><span class="comment"> * @param port</span></span><br><span class="line"><span class="comment"> * @param name</span></span><br><span class="line"><span class="comment"> * @param pwd</span></span><br><span class="line"><span class="comment"> * @return</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public boolean login(<span class="built_in">String</span> ip,int port, <span class="built_in">String</span> name, <span class="built_in">String</span> pwd) &#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		ftp = <span class="keyword">new</span> FTPClient();</span><br><span class="line">		ftp.connect(ip, port);</span><br><span class="line">		System.out.println(ftp.login(name, pwd));</span><br><span class="line">		<span class="keyword">if</span>(!ftp.login(name, pwd))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		ftp.setCharset(Charset.forName(<span class="string">"UTF-8"</span>));</span><br><span class="line">		ftp.setControlEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：获取远程文件目录，上传和下载方法基于登陆方法</p>
+</blockquote>
+<h3 id="2-2-获取远程文件目录"><a href="#2-2-获取远程文件目录" class="headerlink" title="2.2 获取远程文件目录"></a>2.2 获取远程文件目录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取ftp某一文件（路径）下的文件名字,用于查看文件列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ip</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> port</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pwd</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> remotedir 远程地址目录</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">getFilesName</span><span class="params">(String ip,<span class="keyword">int</span> port, String name, String pwd, String remotedir)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">       	<span class="keyword">if</span>(!login(ip, port, name, pwd))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">           <span class="comment">//获取ftp里面，指定文件夹 里面的文件名字，存入数组中</span></span><br><span class="line">           FTPFile[] files = ftp.listFiles(remotedir);</span><br><span class="line">           <span class="comment">//打印出ftp里面，指定文件夹 里面的文件名字</span></span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; files.length; i++) &#123;</span><br><span class="line">               System.out.println(files[i].getName());</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">       	<span class="keyword">this</span>.close();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-上传文件"><a href="#2-3-上传文件" class="headerlink" title="2.3 上传文件"></a>2.3 上传文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 上传文件 方法一</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> ip</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> port</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> pwd</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> remotepath 远程地址文件路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> localpath 本地文件路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">putFileOne</span><span class="params">(String ip,<span class="keyword">int</span> port, String name, String pwd,String remotepath,String localpath)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">       	<span class="keyword">if</span>(!login(ip, port, name, pwd))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">           <span class="comment">//将本地的 localpath 文件上传到ftp的根目录文件夹下面，并重命名为 remotepath中的名字</span></span><br><span class="line">       	 <span class="keyword">return</span> ftp.storeFile(remotepath, <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(localpath)));</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">       	<span class="keyword">this</span>.close();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 上传文件的第二种方法，优化了传输速度</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> ip</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> port</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> pwd</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> remotepath 远程地址文件路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> localpath 本地文件路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">putFileTwo</span><span class="params">(String ip,<span class="keyword">int</span> port, String name, String pwd,String remotepath,String localpath)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">       	<span class="keyword">if</span>(!login(ip, port, name, pwd))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">           os = ftp.storeFileStream(remotepath);</span><br><span class="line">           fis = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(localpath));</span><br><span class="line">           <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">           <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">           <span class="keyword">while</span> ((len = fis.read(b)) != -<span class="number">1</span>) &#123;</span><br><span class="line">               os.write(b,<span class="number">0</span>,len);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">       	<span class="keyword">this</span>.close();</span><br><span class="line">	&#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-下载文件"><a href="#2-4-下载文件" class="headerlink" title="2.4 下载文件"></a>2.4 下载文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 下载文件 方法一</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> ip</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> port</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> pwd</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> remotepath 远程地址文件路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> localpath 本地文件路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">getFileOne</span><span class="params">(String ip,<span class="keyword">int</span> port, String name, String pwd,String remotepath,String localpath)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">       	<span class="keyword">if</span>(!login(ip, port, name, pwd))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">           <span class="comment">//将ftp资源中 remotepath 文件下载到本地目录文件夹下面，并重命名为 localpath 中的名字</span></span><br><span class="line">       	<span class="keyword">return</span> ftp.retrieveFile(remotepath, <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(localpath)));</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">       	<span class="keyword">this</span>.close();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 下载文件的第二种方法，优化了传输速度</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> ip</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> port</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> pwd</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> remotepath 远程地址文件路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> localpath  本地文件路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">getFileTwo</span><span class="params">(String ip,<span class="keyword">int</span> port, String name, String pwd,String remotepath,String localpath)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(!login(ip, port, name, pwd))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		is = ftp.retrieveFileStream(remotepath);</span><br><span class="line">		fos = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(localpath));</span><br><span class="line">		<span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">		<span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> ((len = is.read(b)) != -<span class="number">1</span>) &#123;</span><br><span class="line">			fos.write(b,<span class="number">0</span>,len);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">this</span>.close();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-源码"><a href="#3-源码" class="headerlink" title="3 源码"></a>3 源码</h2><p>当然上面代码只是重要的部分，如果有问题可去github自行下载 <a href="https://github.com/charmsongo/ftptest" target="_blank" rel="noopener">charmsongo</a></p>
+<blockquote>
+<p>如果有什么更好的方法欢迎留言</p>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/charmsongoo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.csdn.net/qq_29175301">CSDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://my.oschina.net/charmsongo">OSChina</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.cnblogs.com/charmsongo/">博客园</a></span>
+        <span>/</span>
+        
+        <span><a href="https://542869246.github.io">Felix</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            总访问:<span id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+            访客:<span id="busuanzi_value_site_uv"></span>
+        </span>
+        原主题:<a style="text-decoration:none;" target="_Blank" href="https://github.com/aircloud/">aircloud</a>
+        <!--Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>-->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80MTEwMS8xNzYyNg==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>
