@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="charmsongo">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        亦大亦小如你--MySQL - charmsongo
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> limited time is wasted on interesting things </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>charmsongo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-MySQL-简单操作命令"><span class="toc-text">1.MySQL 简单操作命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-自动导入sql文件"><span class="toc-text">2.自动导入sql文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-shell操作"><span class="toc-text">2.1 shell操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-expect操作"><span class="toc-text">2.2 expect操作</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> limited time is wasted on interesting things </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        亦大亦小如你--MySQL
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-03-09 19:56:11</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#CentOS" title="CentOS">CentOS</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#MySQL" title="MySQL">MySQL</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Shell" title="Shell">Shell</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Expect" title="Expect">Expect</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>MySQL 是个神奇的关系型数据库，真心感觉牛逼，因为做的项目比较杂，之前也碰到过 Oracle 数据库，给我的印象是 Oracle 很臃肿繁琐，配置多，如果是小项目用它的话感觉就像是杀鸡用牛刀，大材小用。但是也不是说Mysql不能用于大项目，MySQL 开元免费，是现在关系型数据库的主流产品，网上相应的文档和问题解决方案也会很多，意思就是比如菜鸟如我碰到了Mysql出的问题，网上基本上很全。</p>
+<blockquote>
+<p>系统环境 Debain 7<br>Mysql  5.6</p>
+</blockquote>
+<h2 id="1-MySQL-简单操作命令"><a href="#1-MySQL-简单操作命令" class="headerlink" title="1.MySQL 简单操作命令"></a>1.MySQL 简单操作命令</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.登录mysql，括号中的为可选项，$（包括$）后面为实际数据，-D是指定数据库登录</span></span><br><span class="line">mysql (-h$host) (-P$port) -u$user -p$pwd (-D$dbname)  <span class="comment">//地址 端口 账号 密码 数据库名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.删除、创建数据库</span></span><br><span class="line">drop database dbname; <span class="comment">//删除数据库</span></span><br><span class="line">create database dbname charset utf8   <span class="comment">//创建数据库</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3.删除、创建数据库表</span></span><br><span class="line">drop table tablename;<span class="comment">//删除表</span></span><br><span class="line">create table tablename(id int, name varchar(<span class="number">80</span>)); <span class="comment">//创建表</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//4.表操作</span></span><br><span class="line">show triggers\g / show triggers; <span class="comment">//查看触发器</span></span><br><span class="line">show variables like <span class="string">'character_set_database'</span>; <span class="comment">//查看库编码</span></span><br><span class="line">desc tablename; <span class="comment">//查看表结构</span></span><br><span class="line">select current_date(); <span class="comment">//查看表创建时间</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//5.导入sql文件</span></span><br><span class="line">use dbname;source /dbname.sql; <span class="comment">//执行 sql 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//6.当前的连接情况</span></span><br><span class="line">select current_user(); <span class="comment">//查看当前登录账号</span></span><br><span class="line">show processlist; <span class="comment">//查看当前进程</span></span><br><span class="line">show full processlist;<span class="comment">//查看当前全部进程</span></span><br><span class="line">select user,host,Super_priv <span class="keyword">from</span> mysql.user; <span class="comment">//查看所有可连接用户、地址和权限信息</span></span><br><span class="line">（Super_priv 用户有<span class="keyword">super</span>权限才可以导入数据）</span><br><span class="line">grant all privileges on *.* to root@<span class="string">'%'</span> identified by <span class="string">'root'</span> <span class="keyword">with</span> grant option;flush privileges; <span class="comment">//给root用户远程登录的所有权限</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-自动导入sql文件"><a href="#2-自动导入sql文件" class="headerlink" title="2.自动导入sql文件"></a>2.自动导入sql文件</h2><h3 id="2-1-shell操作"><a href="#2-1-shell操作" class="headerlink" title="2.1 shell操作"></a>2.1 shell操作</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#创建 createDb.sh，内容如下：</span><br><span class="line"></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">#通过 shell 自动初始化数据库和表结构</span><br><span class="line">host=$1 #地址</span><br><span class="line">port=$2 #端口</span><br><span class="line">user=$3 #账号</span><br><span class="line">pwd=$4 #密码</span><br><span class="line">dbname=$5 #数据库名</span><br><span class="line">path=$6 #sql 文件路径</span><br><span class="line"></span><br><span class="line">mysql -h$host -P$port -u$user -p$pwd &lt;&lt;EOF</span><br><span class="line"></span><br><span class="line">drop database <span class="keyword">if</span> exists $dbname;create database $dbname charset utf8;</span><br><span class="line"></span><br><span class="line">use $dbname;</span><br><span class="line"></span><br><span class="line">source $path</span><br><span class="line"></span><br><span class="line">COMMIT;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#查看 shell 的执行过程命令</span><br><span class="line">sh -x ./shell <span class="comment">//查看 shell 执行过程</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-expect操作"><a href="#2-2-expect操作" class="headerlink" title="2.2 expect操作"></a>2.2 expect操作</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/expect -f</span></span><br><span class="line"></span><br><span class="line">set timeout <span class="number">10</span></span><br><span class="line">set host [lindex $argv <span class="number">0</span>]</span><br><span class="line">set port [lindex $argv <span class="number">1</span>]</span><br><span class="line">set user [lindex $argv <span class="number">2</span>]</span><br><span class="line">set pwd [lindex $argv <span class="number">3</span>]</span><br><span class="line">set dbname [lindex $argv <span class="number">4</span>]</span><br><span class="line">set path [lindex $argv <span class="number">5</span>]</span><br><span class="line">set cset [lindex $argv 6] #字符编码</span><br><span class="line"></span><br><span class="line">spawn mysql -h$host -P$port -u$user -p</span><br><span class="line">expect <span class="string">"Enter password: "</span></span><br><span class="line">send <span class="string">"$pwd\r"</span></span><br><span class="line"></span><br><span class="line">expect <span class="string">"mysql&gt; "</span></span><br><span class="line">send <span class="string">"drop database if exists $dbname;create database $dbname charset $cset;\r"</span></span><br><span class="line"></span><br><span class="line">expect <span class="string">"mysql&gt; "</span></span><br><span class="line">send <span class="string">"use $dbname;\r"</span></span><br><span class="line"></span><br><span class="line">expect <span class="string">"mysql&gt; "</span></span><br><span class="line">send <span class="string">"source $path;\r"</span></span><br><span class="line"></span><br><span class="line">expect <span class="string">"mysql&gt; "</span></span><br><span class="line">send <span class="string">"exit\r"</span></span><br><span class="line"></span><br><span class="line">interact</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>回头研究再更新操作，有哪里写的不对的也请不吝赐教</p>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/imcharmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.csdn.net/qq_29175301">CSDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://my.oschina.net/charmsongo">OSChina</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.cnblogs.com/charmsongo/">博客园</a></span>
+        <span>/</span>
+        
+        <span><a href="https://542869246.github.io">Felix</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            总访问:<span id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+            访客:<span id="busuanzi_value_site_uv"></span>
+        </span>
+        原主题:<a style="text-decoration:none;" target="_Blank" href="https://github.com/aircloud/">aircloud</a>
+        <!--Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>-->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80MTEwMS8xNzYyNg==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>
