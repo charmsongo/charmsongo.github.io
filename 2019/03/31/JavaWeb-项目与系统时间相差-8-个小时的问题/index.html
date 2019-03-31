@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="charmsongo">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        JavaWeb 项目与系统时间相差 8 个小时的问题 - charmsongo
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> limited time is wasted on interesting things </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>charmsongo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-查看-Linux-系统时间和时区"><span class="toc-text">1 查看 Linux 系统时间和时区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-查看-jvm-时间和时区"><span class="toc-text">2 查看 jvm 时间和时区</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> limited time is wasted on interesting things </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        JavaWeb 项目与系统时间相差 8 个小时的问题
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-03-31 16:55:16</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Jvm" title="Jvm">Jvm</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Java" title="Java">Java</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#时区" title="时区">时区</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#时间" title="时间">时间</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>今天记录分享一个排查部署到 Linux 上的 web 项目执行的时间和本地系统时间相差 8 小时的问题</p>
+<blockquote>
+<p>环境：redhat 6.5<br>考虑有规律的时间差可能和时区不同有关</p>
+</blockquote>
+<h2 id="1-查看-Linux-系统时间和时区"><a href="#1-查看-Linux-系统时间和时区" class="headerlink" title="1 查看 Linux 系统时间和时区"></a>1 查看 Linux 系统时间和时区</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# date</span><br><span class="line"><span class="number">2019</span>年 <span class="number">03</span>月 <span class="number">31</span>日 星期日 <span class="number">16</span>:<span class="number">00</span>:<span class="number">32</span> CST</span><br><span class="line">[root@localhost ~]# date -R</span><br><span class="line">Sun, <span class="number">31</span> Mar <span class="number">2019</span> <span class="number">16</span>:<span class="number">00</span>:<span class="number">44</span> +<span class="number">0800</span></span><br><span class="line">[root@localhost ~]# date +"%Z %z"</span><br><span class="line">CST +<span class="number">0800</span></span><br></pre></td></tr></table></figure>
+<p>从这里可以确定，系统的时间和时区正常（北京时间，也就是东八区），时区详情请看<a href="https://blog.csdn.net/ensoo/article/details/7527615" target="_blank" rel="noopener">这里</a></p>
+<h2 id="2-查看-jvm-时间和时区"><a href="#2-查看-jvm-时间和时区" class="headerlink" title="2 查看 jvm 时间和时区"></a>2 查看 jvm 时间和时区</h2><p>2.1 先在 Linux 上某个目录执行 javac ，看 javac 命令是否可用,出现如下显示就可以（中间部分已省略）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# javac</span><br><span class="line">用法: javac &lt;options&gt; &lt;source files&gt;</span><br><span class="line">其中, 可能的选项包括:</span><br><span class="line">  -g                         生成所有调试信息</span><br><span class="line">  -g:none                    不生成任何调试信息</span><br><span class="line">  -g:&#123;lines,vars,source&#125;     只生成某些调试信息</span><br><span class="line">  ......</span><br><span class="line">  -X                         输出非标准选项的提要</span><br><span class="line">  -J&lt;标记&gt;                     直接将 &lt;标记&gt; 传递给运行时系统</span><br><span class="line">  -Werror                    出现警告时终止编译</span><br><span class="line">  @&lt;文件名&gt;                     从文件读取选项和文件名</span><br></pre></td></tr></table></figure></p>
+<p>2.2  编写测试程序<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.TimeZone;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">time</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"当前时间："</span>+<span class="keyword">new</span> Date());</span><br><span class="line">        System.out.println(<span class="string">"当前默认时区："</span>+TimeZone.getDefault());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.3 编译执行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# javac time.java </span><br><span class="line">[root@localhost test]# ll</span><br><span class="line">总用量 <span class="number">8</span></span><br><span class="line">-rw-r--r-- <span class="number">1</span> root root <span class="number">780</span> <span class="number">3</span>月  <span class="number">31</span> <span class="number">16</span>:<span class="number">02</span> time.class</span><br><span class="line">-rw-r--r-- <span class="number">1</span> root root <span class="number">239</span> <span class="number">3</span>月  <span class="number">31</span> <span class="number">16</span>:<span class="number">00</span> time.java</span><br><span class="line">[root@localhost test]# java time</span><br><span class="line">当前时间：Sun Mar <span class="number">31</span> <span class="number">08</span>:<span class="number">02</span>:<span class="number">34</span> CTM <span class="number">2019</span></span><br><span class="line">当前默认时区：sun.util.calendar.ZoneInfo[id=<span class="string">"GTM"</span>,offset=<span class="number">28800000</span>,dstSavings=<span class="number">0</span>,useDaylight=<span class="keyword">false</span>,transitions=<span class="number">29</span>,lastRule=<span class="keyword">null</span>]</span><br></pre></td></tr></table></figure>
+<p>这里有导其他的包，如果以上命令不好使，则使用如下命令 （中间的点 . 是当前目录的意思）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# javac -d . time.java</span><br><span class="line">[root@localhost test]# ll</span><br><span class="line">总用量 <span class="number">8</span></span><br><span class="line">-rw-r--r-- <span class="number">1</span> root root <span class="number">780</span> <span class="number">3</span>月  <span class="number">31</span> <span class="number">16</span>:<span class="number">03</span> time.class</span><br><span class="line">-rw-r--r-- <span class="number">1</span> root root <span class="number">239</span> <span class="number">3</span>月  <span class="number">31</span> <span class="number">11</span>:<span class="number">00</span> time.java</span><br><span class="line">[root@localhost test]# java -cp . time</span><br><span class="line">当前时间：Sun Mar <span class="number">31</span> <span class="number">08</span>:<span class="number">02</span>:<span class="number">40</span> CST <span class="number">2019</span></span><br><span class="line">当前默认时区：sun.util.calendar.ZoneInfo[id=<span class="string">"GTM"</span>,offset=<span class="number">28800000</span>,dstSavings=<span class="number">0</span>,useDaylight=<span class="keyword">false</span>,transitions=<span class="number">29</span>,lastRule=<span class="keyword">null</span>]</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这里显然 jvm 的时间比系统的时间早了 8 个小时，且是格林威治的时区，所以这里修改 jvm 的时区即可，这里说下，网上查询说 jvm 的时区默认读取的是硬件时区，目录为 /etc/sysconfig/clock （<a href="http://rashost.com/blog/centos-timezone-configure" target="_blank" rel="noopener">详情</a>），查看如下</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# cat /etc/sysconfig/clock </span><br><span class="line">ZONE=<span class="string">"Asia/Shanghai"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>与网上对比，这里没有下面这两行<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UTC=<span class="keyword">false</span></span><br><span class="line">ARC=<span class="keyword">false</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>这里看有人说是没有设置 UTC=false 导致的问题，查看资料说 UTC 指定 BIOS 中保存的时间是否是 GMT/UTC 时间，true 表示 BIOS 里面保存的时间是 UTC 时间，false 表示 BIOS 里面保存的时间是本地时间。<br>加上后有的机器还是不好使，如果是在 tomcat 下运行的项目，那就重启 tomcat 即可。</p>
+</blockquote>
+<p>如果还不好使，还有修改 tomcat 配置文件的方法，欢迎参考之前的文章：<a href="https://blog.csdn.net/qq_29175301/article/details/81326823" target="_blank" rel="noopener">Tomcat修改日期的时区</a></p>
+<blockquote>
+<p>现在问题基本已解决，以上有些内容是客户现场出现的，所以现在记录时也是凭笔记和记忆回忆的，如有偏差也请不吝赐教。</p>
+</blockquote>
+<p>文章参考：<a href="https://blog.csdn.net/liqinghuiyx/article/details/53333284" target="_blank" rel="noopener">https://blog.csdn.net/liqinghuiyx/article/details/53333284</a></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/imcharmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.csdn.net/qq_29175301">CSDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://my.oschina.net/charmsongo">OSChina</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.cnblogs.com/charmsongo/">博客园</a></span>
+        <span>/</span>
+        
+        <span><a href="https://542869246.github.io">Felix</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            总访问:<span id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+            访客:<span id="busuanzi_value_site_uv"></span>
+        </span>
+        原主题:<a style="text-decoration:none;" target="_Blank" href="https://github.com/aircloud/">aircloud</a>
+        <!--Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>-->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80MTEwMS8xNzYyNg==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>
