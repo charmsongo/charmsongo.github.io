@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="charmsongo">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        springboot登陆页面图片验证码简单的web项目 - charmsongo
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> limited time is wasted on interesting things </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>charmsongo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-生成验证码的工具类"><span class="toc-text">1 生成验证码的工具类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-页面代码"><span class="toc-text">2 页面代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-获取code和验证code的类"><span class="toc-text">3 获取code和验证code的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-效果图镇楼"><span class="toc-text">4 效果图镇楼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-源码"><span class="toc-text">5 源码</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> limited time is wasted on interesting things </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        springboot登陆页面图片验证码简单的web项目
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-04-02 17:18:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Java" title="Java">Java</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Tomcat" title="Tomcat">Tomcat</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#JS" title="JS">JS</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#验证" title="验证">验证</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>前段时间大家都说最近大环境不好，好多公司在裁员，换工作的话不推荐轻易的裸辞，但是我想说的是我所在的公司好流弊，有做不完的业务需求，还有就是招不完的人……<br>最近我也是比较繁忙，但是还是要抽一点时间来进行自我复盘和记录，最近也写一个简单的小功能，就是登陆界面的图片验证码功能</p>
+<blockquote>
+<p>环境：Tomcat9、Jdk1.8</p>
+</blockquote>
+<h2 id="1-生成验证码的工具类"><a href="#1-生成验证码的工具类" class="headerlink" title="1 生成验证码的工具类"></a>1 生成验证码的工具类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">RandomValidateCodeUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public <span class="keyword">static</span> final <span class="built_in">String</span> RANDOMCODEKEY= <span class="string">"RANDOMVALIDATECODEKEY"</span>;<span class="comment">//放到session中的key</span></span><br><span class="line">    private <span class="built_in">String</span> randString = <span class="string">"0123456789"</span>;<span class="comment">//随机产生只有数字的字符串 private String</span></span><br><span class="line">    <span class="comment">//private String randString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";//随机产生只有字母的字符串</span></span><br><span class="line">    <span class="comment">//private String randString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";//随机产生数字与字母组合的字符串</span></span><br><span class="line">    private int width = <span class="number">95</span>;<span class="comment">// 图片宽</span></span><br><span class="line">    private int height = <span class="number">25</span>;<span class="comment">// 图片高</span></span><br><span class="line">    private int lineSize = <span class="number">40</span>;<span class="comment">// 干扰线数量</span></span><br><span class="line">    private int stringNum = <span class="number">4</span>;<span class="comment">// 随机产生字符数量</span></span><br><span class="line"></span><br><span class="line">    private <span class="keyword">static</span> final Logger logger = LoggerFactory.getLogger(RandomValidateCodeUtil.class);</span><br><span class="line"></span><br><span class="line">    private Random random = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获得字体</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    private Font getFont() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Font(<span class="string">"Fixedsys"</span>, Font.CENTER_BASELINE, <span class="number">18</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获得颜色</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    private Color getRandColor(int fc, int bc) &#123;</span><br><span class="line">        <span class="keyword">if</span> (fc &gt; <span class="number">255</span>)</span><br><span class="line">            fc = <span class="number">255</span>;</span><br><span class="line">        <span class="keyword">if</span> (bc &gt; <span class="number">255</span>)</span><br><span class="line">            bc = <span class="number">255</span>;</span><br><span class="line">        int r = fc + random.nextInt(bc - fc - <span class="number">16</span>);</span><br><span class="line">        int g = fc + random.nextInt(bc - fc - <span class="number">14</span>);</span><br><span class="line">        int b = fc + random.nextInt(bc - fc - <span class="number">18</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Color(r, g, b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成随机图片</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    public <span class="keyword">void</span> getRandcode(HttpServletRequest request, HttpServletResponse response) &#123;</span><br><span class="line">        HttpSession session = request.getSession();</span><br><span class="line">        <span class="comment">// BufferedImage类是具有缓冲区的Image类,Image类是用于描述图像信息的类</span></span><br><span class="line">        BufferedImage image = <span class="keyword">new</span> BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);</span><br><span class="line">        Graphics g = image.getGraphics();<span class="comment">// 产生Image对象的Graphics对象,改对象可以在图像上进行各种绘制操作</span></span><br><span class="line">        g.fillRect(<span class="number">0</span>, <span class="number">0</span>, width, height);<span class="comment">//图片大小</span></span><br><span class="line">        g.setFont(<span class="keyword">new</span> Font(<span class="string">"Times New Roman"</span>, Font.ROMAN_BASELINE, <span class="number">18</span>));<span class="comment">//字体大小</span></span><br><span class="line">        g.setColor(getRandColor(<span class="number">110</span>, <span class="number">133</span>));<span class="comment">//字体颜色</span></span><br><span class="line">        <span class="comment">// 绘制干扰线</span></span><br><span class="line">        <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt;= lineSize; i++) &#123;</span><br><span class="line">            drowLine(g);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 绘制随机字符</span></span><br><span class="line">        <span class="built_in">String</span> randomString = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (int i = <span class="number">1</span>; i &lt;= stringNum; i++) &#123;</span><br><span class="line">            randomString = drowString(g, randomString, i);</span><br><span class="line">        &#125;</span><br><span class="line">        logger.info(randomString);</span><br><span class="line">        <span class="comment">//将生成的随机字符串保存到session中</span></span><br><span class="line">        session.removeAttribute(RANDOMCODEKEY);</span><br><span class="line">        session.setAttribute(RANDOMCODEKEY, randomString);</span><br><span class="line">        g.dispose();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 将内存中的图片通过流动形式输出到客户端</span></span><br><span class="line">            ImageIO.write(image, <span class="string">"JPEG"</span>, response.getOutputStream());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            logger.error(<span class="string">"将内存中的图片通过流动形式输出到客户端失败&gt;&gt;&gt;&gt;   "</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 绘制字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    private <span class="built_in">String</span> drowString(Graphics g, <span class="built_in">String</span> randomString, int i) &#123;</span><br><span class="line">        g.setFont(getFont());</span><br><span class="line">        g.setColor(<span class="keyword">new</span> Color(random.nextInt(<span class="number">101</span>), random.nextInt(<span class="number">111</span>), random</span><br><span class="line">                .nextInt(<span class="number">121</span>)));</span><br><span class="line">        <span class="built_in">String</span> rand = <span class="built_in">String</span>.valueOf(getRandomString(random.nextInt(randString</span><br><span class="line">                .length())));</span><br><span class="line">        randomString += rand;</span><br><span class="line">        g.translate(random.nextInt(<span class="number">3</span>), random.nextInt(<span class="number">3</span>));</span><br><span class="line">        g.drawString(rand, <span class="number">13</span> * i, <span class="number">16</span>);</span><br><span class="line">        <span class="keyword">return</span> randomString;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 绘制干扰线</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    private <span class="keyword">void</span> drowLine(Graphics g) &#123;</span><br><span class="line">        int x = random.nextInt(width);</span><br><span class="line">        int y = random.nextInt(height);</span><br><span class="line">        int xl = random.nextInt(<span class="number">13</span>);</span><br><span class="line">        int yl = random.nextInt(<span class="number">15</span>);</span><br><span class="line">        g.drawLine(x, y, x + xl, y + yl);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取随机的字符</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    public <span class="built_in">String</span> getRandomString(int num) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">String</span>.valueOf(randString.charAt(num));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个类不用动，可以直接拿来用</p>
+<h2 id="2-页面代码"><a href="#2-页面代码" class="headerlink" title="2 页面代码"></a>2 页面代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--html/bady代码--&gt;</span><br><span class="line"></span><br><span class="line">&lt;div &gt;</span><br><span class="line">    &lt;div &gt;</span><br><span class="line">        &lt;div &gt;</span><br><span class="line">            &lt;input  type=<span class="string">"tel"</span> id=<span class="string">"verify_input"</span> placeholder=<span class="string">"请输入验证码"</span> maxlength=<span class="string">"4"</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">    &lt;div &gt;</span><br><span class="line">        &lt;a href=<span class="string">"javascript:void(0);"</span> title=<span class="string">"点击更换验证码"</span>&gt;</span><br><span class="line">            &lt;img id=<span class="string">"imgVerify"</span> src=<span class="string">"login/getVerify"</span> alt=<span class="string">"更换验证码"</span> height=<span class="string">"36"</span> width=<span class="string">"170"</span> onclick=<span class="string">"getVerify(this);"</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">    &lt;input type=<span class="string">"button"</span> onclick=<span class="string">"aVerify()"</span> value=<span class="string">"提交"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--js中的代码--&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"./js/jquery.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取验证码</span></span><br><span class="line">    <span class="comment">/*function getVerify(obj)&#123;</span></span><br><span class="line"><span class="comment">        obj.src =  "login/getVerify?"+Math.random();//原生js方式</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//获取验证码</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getVerify</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// $("#imgCode").on("click", function() &#123;</span></span><br><span class="line">        $(<span class="string">"#imgVerify"</span>).attr(<span class="string">"src"</span>, <span class="string">'login/getVerify?'</span> + <span class="built_in">Math</span>.random());<span class="comment">//jquery方式</span></span><br><span class="line">        <span class="comment">// &#125;);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">aVerify</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> value =$(<span class="string">"#verify_input"</span>).val();</span><br><span class="line">        <span class="comment">// alert(value);</span></span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">            type: <span class="string">'post'</span>,</span><br><span class="line">            url: <span class="string">'login/checkVerify'</span>,</span><br><span class="line">            dataType: <span class="string">"json"</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                verifyInput: value</span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (result) &#123;</span><br><span class="line">                    alert(<span class="string">"success!"</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    alert(<span class="string">"failed!"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// window.location.reload();</span></span><br><span class="line">                getVerify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：这里有2种获取验证码图片的方法</p>
+</blockquote>
+<h2 id="3-获取code和验证code的类"><a href="#3-获取code和验证code的类" class="headerlink" title="3 获取code和验证code的类"></a>3 获取code和验证code的类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/login"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Picverifyaction</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> Logger logger = LoggerFactory.getLogger(Picverifyaction.class);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成验证码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/getVerify"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getVerify</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            response.setContentType(<span class="string">"image/jpeg"</span>);<span class="comment">//设置相应类型,告诉浏览器输出的内容为图片</span></span><br><span class="line">            response.setHeader(<span class="string">"Pragma"</span>, <span class="string">"No-cache"</span>);<span class="comment">//设置响应头信息，告诉浏览器不要缓存此内容</span></span><br><span class="line">            response.setHeader(<span class="string">"Cache-Control"</span>, <span class="string">"no-cache"</span>);</span><br><span class="line">            response.setDateHeader(<span class="string">"Expire"</span>, <span class="number">0</span>);</span><br><span class="line">            RandomValidateCodeUtil randomValidateCode = <span class="keyword">new</span> RandomValidateCodeUtil();</span><br><span class="line">            randomValidateCode.getRandcode(request, response);<span class="comment">//输出验证码图片方法</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            logger.error(<span class="string">"获取验证码失败&gt;&gt;&gt;&gt;   "</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 校验验证码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/checkVerify"</span>, method = RequestMethod.POST,headers = <span class="string">"Accept=application/json"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkVerify</span><span class="params">(@RequestParam String verifyInput, HttpSession session)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//从session中获取随机数</span></span><br><span class="line">            String inputStr = verifyInput;</span><br><span class="line">            String random = (String) session.getAttribute(<span class="string">"RANDOMVALIDATECODEKEY"</span>);</span><br><span class="line">            <span class="keyword">if</span> (random == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (random.equals(inputStr)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            logger.error(<span class="string">"验证码校验失败"</span>, e);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-效果图镇楼"><a href="#4-效果图镇楼" class="headerlink" title="4 效果图镇楼"></a>4 效果图镇楼</h2><p><img src="/2019/04/02/springboot登陆页面图片验证码简单的web项目/Snipaste_2019-04-02_17-10-15.png" alt=""></p>
+<h2 id="5-源码"><a href="#5-源码" class="headerlink" title="5 源码"></a>5 源码</h2><p>当然上面代码只是核心部分，如果有问题可去github自行下载 <a href="https://github.com/charmsongo/pictureverifycode" target="_blank" rel="noopener">charmsongo</a></p>
+<blockquote>
+<p>如果有什么更好的方法欢迎留言</p>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/imcharmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.csdn.net/qq_29175301">CSDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://my.oschina.net/charmsongo">OSChina</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.cnblogs.com/charmsongo/">博客园</a></span>
+        <span>/</span>
+        
+        <span><a href="https://542869246.github.io">Felix</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            总访问:<span id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+            访客:<span id="busuanzi_value_site_uv"></span>
+        </span>
+        原主题:<a style="text-decoration:none;" target="_Blank" href="https://github.com/aircloud/">aircloud</a>
+        <!--Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>-->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80MTEwMS8xNzYyNg==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>
