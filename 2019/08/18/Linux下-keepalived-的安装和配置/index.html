@@ -56,32 +56,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>HOME</span>
+                    <span>主页</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>TAGS</span>
+                    <span>标签</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>ARCHIVES</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>ABOUT</span>
+                    <span>关于</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>SEARCH</span>
+                    <span>搜索</span>
                 </a>
             </li>
             
@@ -100,7 +100,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">search</span>
+            <span id="begin-search">搜索</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -123,9 +123,9 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2019-08-18 18:47:19</span></span>
+        <span class="attr">发布于：<span>2019-08-18 18:47:19</span></span>
         
-        <span class="attr">Tags：/
+        <span class="attr">标签：/
         
         <a class="tag" href="/tags/#linux" title="linux">linux</a>
         <span>/</span>
@@ -141,7 +141,7 @@
         
         
         </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -149,28 +149,15 @@
         <h1 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h1><blockquote>
 <p>基础系统：CentOS 7 </p>
 </blockquote>
-<pre><code>yum -y install gcc gcc-c++ autoconf automake make 
-yum -y install zlib zlib-devel openssl openssl-devel pcre pcre-devel
-</code></pre><h2 id="1-下载keepalived"><a href="#1-下载keepalived" class="headerlink" title="1.下载keepalived"></a>1.下载keepalived</h2><p><strong>方法一：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install keepalived</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc gcc-c++ autoconf automake make </span><br><span class="line">yum -y install zlib zlib-devel openssl openssl-devel pcre pcre-devel</span><br></pre></td></tr></table></figure>
+<h2 id="1-下载keepalived"><a href="#1-下载keepalived" class="headerlink" title="1.下载keepalived"></a>1.下载keepalived</h2><p><strong>方法一：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install keepalived</span><br></pre></td></tr></table></figure>
 <p>   <strong>方法二</strong>：<br>   下载二进制源码包：<a href="http://www.keepalived.org/download.html" target="_blank" rel="noopener">http://www.keepalived.org/download.html</a> </p>
-<pre><code>#下载安装文件
-
-cd /usr/local
-wget http://www.keepalived.org/software/keepalived-2.0.18.tar.gz
-#解压文件
-tar -zxvf keepalived-2.0.18.tar.gz
-#编译
-cd keepalived-2.0.18/
-#--prefix 指定安装地址
-#/usr/local/keepalived/ 安装的目录，不要和自己安装文件一个目录，不然报错
-./configure --prefix=/usr/local/keepalived/
-#编译并安装
- make &amp;&amp; make install
-</code></pre><h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h2><p> <strong>复制文件：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cp /usr/local/keepalived-2.0.18/keepalived/etc/init.d/keepalived /etc/init.d/</span><br><span class="line">[root@localhost ~]# mkdir /etc/keepalived</span><br><span class="line">[root@localhost ~]# cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/</span><br><span class="line">[root@localhost ~]# cp /usr/local/keepalived-2.0.18/keepalived/etc/sysconfig/keepalived /etc/sysconfig/</span><br><span class="line">[root@localhost ~]# cp /usr/local/keepalived/sbin/keepalived /usr/sbin/</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>下载安装文件</span><br><span class="line"></span><br><span class="line">cd /usr/local</span><br><span class="line">wget http://www.keepalived.org/software/keepalived-2.0.18.tar.gz</span><br><span class="line"><span class="meta">#</span>解压文件</span><br><span class="line">tar -zxvf keepalived-2.0.18.tar.gz</span><br><span class="line"><span class="meta">#</span>编译</span><br><span class="line">cd keepalived-2.0.18/</span><br><span class="line"><span class="meta">#</span>--prefix 指定安装地址</span><br><span class="line"><span class="meta">#</span>/usr/local/keepalived/ 安装的目录，不要和自己安装文件一个目录，不然报错</span><br><span class="line">./configure --prefix=/usr/local/keepalived/</span><br><span class="line"><span class="meta">#</span>编译并安装</span><br><span class="line"> make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h2><p> <strong>复制文件：</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cp /usr/local/keepalived-2.0.18/keepalived/etc/init.d/keepalived /etc/init.d/</span><br><span class="line">[root@localhost ~]# mkdir /etc/keepalived</span><br><span class="line">[root@localhost ~]# cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/</span><br><span class="line">[root@localhost ~]# cp /usr/local/keepalived-2.0.18/keepalived/etc/sysconfig/keepalived /etc/sysconfig/</span><br><span class="line">[root@localhost ~]# cp /usr/local/keepalived/sbin/keepalived /usr/sbin/</span><br></pre></td></tr></table></figure></p>
 <p><strong>编辑：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/keepalived/keepalived.conf</span><br></pre></td></tr></table></figure>
-<p> /etc/keepalived/keepalived.conf内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line">    notification_email &#123;</span><br><span class="line">        #mr@mruse.cn       # 指定keepalived在发生切换时需要发送email到的对象，一行一个</span><br><span class="line">        #sysadmin@firewall.loc</span><br><span class="line">    &#125;</span><br><span class="line">    notification_email_from xxx@163.com   # 指定发件人</span><br><span class="line">    smtp_server smtp@163.com              # smtp 服务器地址</span><br><span class="line">    smtp_connect_timeout 30               # smtp 服务器连接超时时间</span><br><span class="line">    router_id LVS_1 # 必填，标识本节点的字符串,通常为hostname,但不一定非得是hostname,故障发生时,邮件通知会用到</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">vrrp_script chk_tomcat &#123;					#详细看下面</span><br><span class="line">	script &quot;/etc/keepalived/tomcat_check.sh&quot;			#检测服务shell</span><br><span class="line">	interval 2									#每个多长时间探测一次</span><br><span class="line">	weight -20											#每个多长时间探测一次												</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_instance VI_1 &#123;  # 实例名称</span><br><span class="line">    state MASTER      #  必填，可以是MASTER或BACKUP，不过当其他节点keepalived启动时会将priority比较大的节点选举为MASTER</span><br><span class="line">    interface ens33    #  必填， 节点固有IP（非VIP）的网卡，用来发VRRP包做心跳检测</span><br><span class="line">    mcast_src_ip 192.168.2.89 #本机的ip，需要修改</span><br><span class="line">    virtual_router_id 101 #  必填，虚拟路由ID,取值在0-255之间,用来区分多个instance的VRRP组播,同一网段内ID不能重复;主备必须为一样;</span><br><span class="line">    priority 100      #  必填，用来选举master的,要成为master那么这个选项的值最好高于其他机器50个点,该项取值范围是1-255(在此范围之外会被识别成默认值100)</span><br><span class="line">    advert_int 1      #  必填，检查间隔默认为1秒,即1秒进行一次master选举(可以认为是健康查检时间间隔)</span><br><span class="line">    authentication &#123;  #  必填，认证区域,认证类型有PASS和HA（IPSEC）,推荐使用PASS(密码只识别前8位)</span><br><span class="line">        auth_type PASS  # 默认是PASS认证</span><br><span class="line">        auth_pass 1111 # PASS认证密码</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        192.168.2.90    #  必填，虚拟VIP地址,允许多个</span><br><span class="line">    &#125;</span><br><span class="line">    track_script &#123;		 # 检测shell							</span><br><span class="line">		chk_tomcat</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> /etc/keepalived/keepalived.conf内容如下<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line">    notification_email &#123;</span><br><span class="line">        #mr@mruse.cn       # 指定keepalived在发生切换时需要发送email到的对象，一行一个</span><br><span class="line">        #sysadmin@firewall.loc</span><br><span class="line">    &#125;</span><br><span class="line">    notification_email_from xxx@163.com   # 指定发件人</span><br><span class="line">    smtp_server smtp@163.com              # smtp 服务器地址</span><br><span class="line">    smtp_connect_timeout 30               # smtp 服务器连接超时时间</span><br><span class="line">    router_id LVS_1 # 必填，标识本节点的字符串,通常为hostname,但不一定非得是hostname,故障发生时,邮件通知会用到</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">vrrp_script chk_tomcat &#123;					#详细看下面</span><br><span class="line">	script "/etc/keepalived/tomcat_check.sh"			#检测服务shell</span><br><span class="line">	interval 2									#每个多长时间探测一次</span><br><span class="line">	weight -20											#每个多长时间探测一次												</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_instance VI_1 &#123;  # 实例名称</span><br><span class="line">    state MASTER      #  必填，可以是MASTER或BACKUP，不过当其他节点keepalived启动时会将priority比较大的节点选举为MASTER</span><br><span class="line">    interface ens33    #  必填， 节点固有IP（非VIP）的网卡，用来发VRRP包做心跳检测</span><br><span class="line">    mcast_src_ip 192.168.2.89 #本机的ip，需要修改</span><br><span class="line">    virtual_router_id 101 #  必填，虚拟路由ID,取值在0-255之间,用来区分多个instance的VRRP组播,同一网段内ID不能重复;主备必须为一样;</span><br><span class="line">    priority 100      #  必填，用来选举master的,要成为master那么这个选项的值最好高于其他机器50个点,该项取值范围是1-255(在此范围之外会被识别成默认值100)</span><br><span class="line">    advert_int 1      #  必填，检查间隔默认为1秒,即1秒进行一次master选举(可以认为是健康查检时间间隔)</span><br><span class="line">    authentication &#123;  #  必填，认证区域,认证类型有PASS和HA（IPSEC）,推荐使用PASS(密码只识别前8位)</span><br><span class="line">        auth_type PASS  # 默认是PASS认证</span><br><span class="line">        auth_pass 1111 # PASS认证密码</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        192.168.2.90    #  必填，虚拟VIP地址,允许多个</span><br><span class="line">    &#125;</span><br><span class="line">    track_script &#123;		 # 检测shell							</span><br><span class="line">		chk_tomcat</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>vrrp_script 里的script返回<strong>值为0</strong>时认为<strong>检测成功</strong>，<strong>其它值</strong>都会当成<strong>检测失败</strong>；</p>
 <ol>
 <li><strong>weight 为正时</strong>，<strong>脚本检测成功时此weight会加到priority上</strong>，检测失败时不加；<br>A.主失败：主 priority &lt; 从 priority + weight 时会切换。<br>B.主成功：主 priority + weight &gt; 从 priority + weight 时，主依然为主</li>
@@ -178,14 +165,14 @@ cd keepalived-2.0.18/
 </ol>
 <p><strong>检测shell：/etc/keepalived/tomcat_check.sh 可以根据 tomcat 服务检测结果返回不同的值，成功执行 exit 0 返回 0，失败执行 exit 1 返回 1，vrrp_script 可以结合返回值来对当前keepalived优先级做处理</strong></p>
 <h2 id="3-开启服务"><a href="#3-开启服务" class="headerlink" title="3.开启服务"></a>3.开启服务</h2><p>设置 keepalived 服务开机启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># chkconfig keepalived on  </span><br><span class="line"># 启动keepalived 服务</span><br><span class="line"># service keepalived start</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> chkconfig keepalived on  </span><br><span class="line"><span class="meta">#</span> 启动keepalived 服务</span><br><span class="line"><span class="meta">#</span> service keepalived start</span><br></pre></td></tr></table></figure>
 <p>查看keepalived进程，出现如下三个进程即为启动成功</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ps -ef | grep keep</span><br><span class="line">root       7925      1  0 11:27 ?        00:00:00 /usr/local/keepalived/sbin/keepalived -D</span><br><span class="line">root       7926      1  0 11:27 ?        00:00:00 /usr/local/keepalived/sbin/keepalived -D</span><br><span class="line">root       7927   7926  0 11:27 ?        00:00:00 /usr/local/keepalived/sbin/keepalived -D</span><br><span class="line">root       7956   7888  0 12:02 pts/1    00:00:00 grep --color=auto keep</span><br></pre></td></tr></table></figure>
 <h2 id="4-指定日志的输出文件"><a href="#4-指定日志的输出文件" class="headerlink" title="4.指定日志的输出文件"></a>4.指定日志的输出文件</h2><p>修改 /etc/sysconfig</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim  /etc/sysconfig</span><br><span class="line">#指定位置修改为如下内容</span><br><span class="line">KEEPALIVED_OPTIONS=&quot;-D -d -S 0&quot;</span><br></pre></td></tr></table></figure>
-<p>修改 /etc/rsyslog.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rsyslog.conf</span><br><span class="line">#在最后一行添加如下内容</span><br><span class="line">local0.* /var/log/keepalived.log</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim  /etc/sysconfig</span><br><span class="line"><span class="meta">#</span>指定位置修改为如下内容</span><br><span class="line">KEEPALIVED_OPTIONS="-D -d -S 0"</span><br></pre></td></tr></table></figure>
+<p>修改 /etc/rsyslog.conf<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rsyslog.conf</span><br><span class="line"><span class="meta">#</span>在最后一行添加如下内容</span><br><span class="line">local0.* /var/log/keepalived.log</span><br></pre></td></tr></table></figure></p>
 <p>重启服务测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">service rsyslog restart</span><br><span class="line">service rsyslog restart</span><br><span class="line"></span><br><span class="line">#如下命令有日志内容输出即为成功</span><br><span class="line">tailf /var/log/keepalived.log</span><br><span class="line"></span><br><span class="line">#centos 基本可以成功，但是 debain 可能失败，失败上面 2 个文件可以改为如下内容，再重启服务测试</span><br><span class="line">KEEPALIVED_OPTIONS=&quot;-D -d -S 1&quot;</span><br><span class="line">local1.* /var/log/keepalived.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">service rsyslog restart</span><br><span class="line">service rsyslog restart</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>如下命令有日志内容输出即为成功</span><br><span class="line">tailf /var/log/keepalived.log</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>centos 基本可以成功，但是 debain 可能失败，失败上面 2 个文件可以改为如下内容，再重启服务测试</span><br><span class="line">KEEPALIVED_OPTIONS="-D -d -S 1"</span><br><span class="line">local1.* /var/log/keepalived.log</span><br></pre></td></tr></table></figure>
 <p>参考：<a href="https://blog.csdn.net/weixin_33845881/article/details/86016142" target="_blank" rel="noopener">https://blog.csdn.net/weixin_33845881/article/details/86016142</a></p>
 <blockquote>
 <p>如果有哪些不对的地方烦请指认，先行感谢</p>
