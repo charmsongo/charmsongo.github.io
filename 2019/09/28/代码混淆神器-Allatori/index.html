@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="charmsongo">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        代码混淆神器 Allatori - charmsongo
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> limited time is wasted on interesting things </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>charmsongo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#准备工作"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Allatori简介"><span class="toc-text">1.Allatori简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-下载"><span class="toc-text">2.下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-内容简介"><span class="toc-text">3.内容简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-使用"><span class="toc-text">4.使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-测试"><span class="toc-text">5.测试</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> limited time is wasted on interesting things </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        代码混淆神器 Allatori
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-09-28 12:52:33</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Java" title="Java">Java</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Allatori" title="Allatori">Allatori</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#jd-gui.exe" title="jd-gui.exe">jd-gui.exe</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#反编译" title="反编译">反编译</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#混淆器" title="混淆器">混淆器</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><blockquote>
+<p>此次案例使用官方 Demo，不使用任何插件<br>环境：windows 10</p>
+</blockquote>
+<h2 id="1-Allatori简介"><a href="#1-Allatori简介" class="headerlink" title="1.Allatori简介"></a>1.Allatori简介</h2><blockquote>
+<p><strong>Allatori</strong> 是第二代 Java 混淆器，可为您的知识产权提供全方位的保护。</p>
+<p><strong>尽管</strong>大多数第二代混淆器都提供了值得保护的级别，但我们已经在Allatori中开发了许多附加功能，以使对代码进行逆向工程几乎不可能。</p>
+<p><strong>Allatori</strong> 不仅会混淆，还会最大程度地减少应用程序的大小并提高速度，同时您和您的团队以外的任何人都无法读取您的代码。作为每个现代 Java 混淆器，Allatori 具有完整的水印功能，从而有可能为您的软件提供适当的许可！</p>
+<p><strong>如果</strong>有必要保护您的软件，并且要减少软件的大小和缩短处理时间，则可以使用 Allatori 混淆器。</p>
+</blockquote>
+<p>&nbsp;- - 摘自ALLATORI JAVA混淆器官网</p>
+<h2 id="2-下载"><a href="#2-下载" class="headerlink" title="2.下载"></a>2.下载</h2><p> 1.官网最新 Allatori-7.1-Demo.zip <a href="http://www.allatori.com/downloads/Allatori-7.1-Demo.zip" target="_blank" rel="noopener">下载</a><br> 2.CSDN<a href="https://download.csdn.net/download/qq_29175301/11828078" target="_blank" rel="noopener">下载</a>（包含反编译工具 jd-gui.exe）</p>
+<h2 id="3-内容简介"><a href="#3-内容简介" class="headerlink" title="3.内容简介"></a>3.内容简介</h2><p> 1.解压下载的压缩包 Allatori-7.1-Demo.zip<br> 然后进入目录 xx/Allatori-7.1-Demo\tutorial\step01\files</p>
+<p>2.目录如下内容<br><img src="https://img-blog.csdnimg.cn/20190928120722147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx,size_16,color_FFFFFF,t_70" alt="Allatori-7.1-Demo\tutorial\step01\files"></p>
+<ul>
+<li><strong>Clean.bat</strong>:清除 log.xml 以及生成混淆的文件</li>
+<li><strong>config.xml</strong>：混淆的配置文件</li>
+<li><strong>mousegestures-1.2.jar、test.jar</strong>：被混淆的 jar 包</li>
+<li><strong>MouseGesturesOriginal.bat</strong>：混淆前 jar 的测试命令</li>
+<li><strong>MouseGesturesObfuscated.bat</strong>：混淆后 jar 的测试命令</li>
+<li><strong>RunAllatori.bat</strong>：执行生成混淆 jar 的命令</li>
+</ul>
+<p>3.config.xml 详解</p>
+<blockquote>
+<p>混淆的成功与否在于次配置的对与错。官方默认对除了 public 修饰的类、方法、区域放开，其余的都会混淆处理</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;config&gt;</span><br><span class="line">    &lt;input&gt;</span><br><span class="line">        &lt;jar <span class="keyword">in</span>=<span class="string">"test.jar"</span> out=<span class="string">"obf-test.jar"</span>/&gt;</span><br><span class="line">        &lt;jar <span class="keyword">in</span>=<span class="string">"mousegestures-1.2.jar"</span> out=<span class="string">"obf-mousegestures-1.2.jar"</span>/&gt;</span><br><span class="line">    &lt;/input&gt;</span><br><span class="line"></span><br><span class="line">    &lt;keep-names&gt;</span><br><span class="line">        &lt;class access=<span class="string">"protected+"</span>&gt;</span><br><span class="line">            &lt;field access=<span class="string">"protected+"</span>/&gt;</span><br><span class="line">            &lt;method access=<span class="string">"protected+"</span>/&gt;</span><br><span class="line">        &lt;/class&gt;</span><br><span class="line">    &lt;/keep-names&gt;</span><br><span class="line"></span><br><span class="line">    &lt;property name=<span class="string">"log-file"</span> value=<span class="string">"log.xml"</span>/&gt;</span><br><span class="line">&lt;/config&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jar <span class="keyword">in</span>=<span class="string">"你的 jar 包名称.jar"</span> out=<span class="string">"混淆后的 jar 包名称.jar"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-使用"><a href="#4-使用" class="headerlink" title="4.使用"></a>4.使用</h2><ol>
+<li>把需要混淆的 jar 包放到刚才的目录下</li>
+<li>修改 config.xml的 jar 部分，写上被混淆 jar 的名字和混淆后 jar 的名字</li>
+<li>双击 RunAllatori.bat，会生成一个新 jar<h2 id="5-测试"><a href="#5-测试" class="headerlink" title="5.测试"></a>5.测试</h2>1.如果双击 MouseGesturesOriginal.bat 和 MouseGesturesObfuscated.bat 的结果一样，说明混淆成功。<br>2.使用反编译工具 jd-gui.exe 查看混淆后的 jar 包，会发现除了public 修饰的方法都被混淆</li>
+</ol>
+<blockquote>
+<p>注意：常量的值不会被混淆，处理方案是，放到方法中即可实现混淆<br>如果有哪些不对的地方烦请指认，先行感谢</p>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/imcharmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.csdn.net/qq_29175301">CSDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://my.oschina.net/charmsongo">OSChina</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.cnblogs.com/charmsongo/">博客园</a></span>
+        <span>/</span>
+        
+        <span><a href="https://542869246.github.io">Felix</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.huasleung.com/">Huas Leung</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            总访问:<span id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+            访客:<span id="busuanzi_value_site_uv"></span>
+        </span>
+        原主题:<a style="text-decoration:none;" target="_Blank" href="https://github.com/aircloud/">aircloud</a>
+        <!--Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>-->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80MTEwMS8xNzYyNg==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>
