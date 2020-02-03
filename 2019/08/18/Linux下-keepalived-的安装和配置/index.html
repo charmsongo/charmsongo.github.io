@@ -56,32 +56,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>HOME</span>
+                    <span>主页</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>TAGS</span>
+                    <span>标签</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>ARCHIVES</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>ABOUT</span>
+                    <span>关于</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>SEARCH</span>
+                    <span>搜索</span>
                 </a>
             </li>
             
@@ -100,7 +100,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">search</span>
+            <span id="begin-search">搜索</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -123,9 +123,9 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2019-08-18 18:47:19</span></span>
+        <span class="attr">发布于：<span>2019-08-18 18:47:19</span></span>
         
-        <span class="attr">Tags：/
+        <span class="attr">标签：/
         
         <a class="tag" href="/tags/#linux" title="linux">linux</a>
         <span>/</span>
@@ -141,7 +141,7 @@
         
         
         </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -153,7 +153,7 @@
 <h2 id="1-下载keepalived"><a href="#1-下载keepalived" class="headerlink" title="1.下载keepalived"></a>1.下载keepalived</h2><p><strong>方法一：</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install keepalived</span><br></pre></td></tr></table></figure>
 <p>   <strong>方法二</strong>：<br>   下载二进制源码包：<a href="http://www.keepalived.org/download.html" target="_blank" rel="noopener">http://www.keepalived.org/download.html</a> </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>下载安装文件</span><br><span class="line"></span><br><span class="line">cd /usr/local</span><br><span class="line">wget http://www.keepalived.org/software/keepalived-2.0.18.tar.gz</span><br><span class="line"><span class="meta">#</span>解压文件</span><br><span class="line">tar -zxvf keepalived-2.0.18.tar.gz</span><br><span class="line"><span class="meta">#</span>编译</span><br><span class="line">cd keepalived-2.0.18/</span><br><span class="line"><span class="meta">#</span>--prefix 指定安装地址</span><br><span class="line"><span class="meta">#</span>/usr/local/keepalived/ 安装的目录，不要和自己安装文件一个目录，不然报错</span><br><span class="line">./configure --prefix=/usr/local/keepalived/</span><br><span class="line"><span class="meta">#</span>编译并安装</span><br><span class="line"> make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">下载安装文件</span></span><br><span class="line"></span><br><span class="line">cd /usr/local</span><br><span class="line">wget http://www.keepalived.org/software/keepalived-2.0.18.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash">解压文件</span></span><br><span class="line">tar -zxvf keepalived-2.0.18.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash">编译</span></span><br><span class="line">cd keepalived-2.0.18/</span><br><span class="line"><span class="meta">#</span><span class="bash">--prefix 指定安装地址</span></span><br><span class="line"><span class="meta">#</span><span class="bash">/usr/<span class="built_in">local</span>/keepalived/ 安装的目录，不要和自己安装文件一个目录，不然报错</span></span><br><span class="line">./configure --prefix=/usr/local/keepalived/</span><br><span class="line"><span class="meta">#</span><span class="bash">编译并安装</span></span><br><span class="line"> make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 <h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h2><p> <strong>复制文件：</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cp /usr/local/keepalived-2.0.18/keepalived/etc/init.d/keepalived /etc/init.d/</span><br><span class="line">[root@localhost ~]# mkdir /etc/keepalived</span><br><span class="line">[root@localhost ~]# cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/</span><br><span class="line">[root@localhost ~]# cp /usr/local/keepalived-2.0.18/keepalived/etc/sysconfig/keepalived /etc/sysconfig/</span><br><span class="line">[root@localhost ~]# cp /usr/local/keepalived/sbin/keepalived /usr/sbin/</span><br></pre></td></tr></table></figure></p>
 <p><strong>编辑：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/keepalived/keepalived.conf</span><br></pre></td></tr></table></figure>
@@ -165,14 +165,14 @@
 </ol>
 <p><strong>检测shell：/etc/keepalived/tomcat_check.sh 可以根据 tomcat 服务检测结果返回不同的值，成功执行 exit 0 返回 0，失败执行 exit 1 返回 1，vrrp_script 可以结合返回值来对当前keepalived优先级做处理</strong></p>
 <h2 id="3-开启服务"><a href="#3-开启服务" class="headerlink" title="3.开启服务"></a>3.开启服务</h2><p>设置 keepalived 服务开机启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> chkconfig keepalived on  </span><br><span class="line"><span class="meta">#</span> 启动keepalived 服务</span><br><span class="line"><span class="meta">#</span> service keepalived start</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> chkconfig keepalived on  </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动keepalived 服务</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> service keepalived start</span></span><br></pre></td></tr></table></figure>
 <p>查看keepalived进程，出现如下三个进程即为启动成功</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ps -ef | grep keep</span><br><span class="line">root       7925      1  0 11:27 ?        00:00:00 /usr/local/keepalived/sbin/keepalived -D</span><br><span class="line">root       7926      1  0 11:27 ?        00:00:00 /usr/local/keepalived/sbin/keepalived -D</span><br><span class="line">root       7927   7926  0 11:27 ?        00:00:00 /usr/local/keepalived/sbin/keepalived -D</span><br><span class="line">root       7956   7888  0 12:02 pts/1    00:00:00 grep --color=auto keep</span><br></pre></td></tr></table></figure>
 <h2 id="4-指定日志的输出文件"><a href="#4-指定日志的输出文件" class="headerlink" title="4.指定日志的输出文件"></a>4.指定日志的输出文件</h2><p>修改 /etc/sysconfig</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim  /etc/sysconfig</span><br><span class="line"><span class="meta">#</span>指定位置修改为如下内容</span><br><span class="line">KEEPALIVED_OPTIONS="-D -d -S 0"</span><br></pre></td></tr></table></figure>
-<p>修改 /etc/rsyslog.conf<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rsyslog.conf</span><br><span class="line"><span class="meta">#</span>在最后一行添加如下内容</span><br><span class="line">local0.* /var/log/keepalived.log</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim  /etc/sysconfig</span><br><span class="line"><span class="meta">#</span><span class="bash">指定位置修改为如下内容</span></span><br><span class="line">KEEPALIVED_OPTIONS="-D -d -S 0"</span><br></pre></td></tr></table></figure>
+<p>修改 /etc/rsyslog.conf<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rsyslog.conf</span><br><span class="line"><span class="meta">#</span><span class="bash">在最后一行添加如下内容</span></span><br><span class="line">local0.* /var/log/keepalived.log</span><br></pre></td></tr></table></figure></p>
 <p>重启服务测试</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">service rsyslog restart</span><br><span class="line">service rsyslog restart</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>如下命令有日志内容输出即为成功</span><br><span class="line">tailf /var/log/keepalived.log</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>centos 基本可以成功，但是 debain 可能失败，失败上面 2 个文件可以改为如下内容，再重启服务测试</span><br><span class="line">KEEPALIVED_OPTIONS="-D -d -S 1"</span><br><span class="line">local1.* /var/log/keepalived.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">service rsyslog restart</span><br><span class="line">service rsyslog restart</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">如下命令有日志内容输出即为成功</span></span><br><span class="line">tailf /var/log/keepalived.log</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">centos 基本可以成功，但是 debain 可能失败，失败上面 2 个文件可以改为如下内容，再重启服务测试</span></span><br><span class="line">KEEPALIVED_OPTIONS="-D -d -S 1"</span><br><span class="line">local1.* /var/log/keepalived.log</span><br></pre></td></tr></table></figure>
 <p>参考：<a href="https://blog.csdn.net/weixin_33845881/article/details/86016142" target="_blank" rel="noopener">https://blog.csdn.net/weixin_33845881/article/details/86016142</a></p>
 <blockquote>
 <p>如果有哪些不对的地方烦请指认，先行感谢</p>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="charmsongo">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        CentOS 7 安装 RabbitMQ - charmsongo
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> limited time is wasted on interesting things </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>charmsongo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境准备"><span class="toc-text">环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-下载并上传对应版本的软件包"><span class="toc-text">1.下载并上传对应版本的软件包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Erlang-下载"><span class="toc-text">1.1.Erlang 下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-RabbitMQ-下载"><span class="toc-text">1.2.RabbitMQ 下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-上传"><span class="toc-text">1.3. 上传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装依赖"><span class="toc-text">2.安装依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Erlang-安装"><span class="toc-text">3.Erlang 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-RabbitMQ-安装"><span class="toc-text">4.RabbitMQ 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-安装-WEB-管理界面"><span class="toc-text">5.安装 WEB 管理界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-RabbitMQ-用户管理"><span class="toc-text">6.RabbitMQ 用户管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-登录验证"><span class="toc-text">7.登录验证</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> limited time is wasted on interesting things </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        CentOS 7 安装 RabbitMQ
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-02-03 10:57:51</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#CentOS" title="CentOS">CentOS</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#RabbitMQ" title="RabbitMQ">RabbitMQ</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Erlang" title="Erlang">Erlang</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>@<a href="终于等到你">TOC</a></p>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><blockquote>
+<p>基础系统：CentOS 7.6<br>Erlang 和 RabbitMQ 需要版本对应，参考 <a href="https://www.rabbitmq.com/which-erlang.html" target="_blank" rel="noopener">这里</a>，本次使用如下版本<br>Erlang：otp_src_22.0.tar.gz （RabbitMQ 是基于 Erlang 语言开发的，所以必须先安装 Erlang）<br>RabbitMQ：rabbitmq-server-generic-unix-3.7.15.tar.xz</p>
+</blockquote>
+<h2 id="1-下载并上传对应版本的软件包"><a href="#1-下载并上传对应版本的软件包" class="headerlink" title="1.下载并上传对应版本的软件包"></a>1.下载并上传对应版本的软件包</h2><h3 id="1-1-Erlang-下载"><a href="#1-1-Erlang-下载" class="headerlink" title="1.1.Erlang 下载"></a>1.1.Erlang 下载</h3><p><strong>erlang官网</strong>：<a href="https://www.erlang.org/downloads" target="_blank" rel="noopener">https://www.erlang.org/downloads</a></p>
+<p>otp_src_22.0.tar.gz（ 1 慢就用 2 ） <a href="http://erlang.org/download/otp_src_22.0.tar.gz" target="_blank" rel="noopener">下载 1</a> <a href="https://pan.baidu.com/s/1TOCkB2o5LVhkmIJJoYaanw" target="_blank" rel="noopener">下载 2</a></p>
+<h3 id="1-2-RabbitMQ-下载"><a href="#1-2-RabbitMQ-下载" class="headerlink" title="1.2.RabbitMQ 下载"></a>1.2.RabbitMQ 下载</h3><p><strong>下载地址</strong>：<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15" target="_blank" rel="noopener">https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15</a></p>
+<p>rabbitmq-server-generic-unix-3.7.15.tar.xz <a href="https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.15/rabbitmq-server-generic-unix-3.7.15.tar.xz" target="_blank" rel="noopener">下载</a></p>
+<h3 id="1-3-上传"><a href="#1-3-上传" class="headerlink" title="1.3. 上传"></a>1.3. 上传</h3><p> 通过 WinScp 把两个文件拖到服务器的目录 /usr/local/</p>
+<h2 id="2-安装依赖"><a href="#2-安装依赖" class="headerlink" title="2.安装依赖"></a>2.安装依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc glibc-devel make ncurses-devel openssl-devel xmlto perl wget gtk2-devel binutils-devel</span><br></pre></td></tr></table></figure>
+<h2 id="3-Erlang-安装"><a href="#3-Erlang-安装" class="headerlink" title="3.Erlang 安装"></a>3.Erlang 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># cd /usr/local/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#解压</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment">#  tar -zxvf otp_src_22.0.tar.gz</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#创建安装目录</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment">#  mkdir erlang</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#切换目录</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># cd otp_src_22.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#配置安装路径</span></span><br><span class="line">[root@localhost otp_src_22.0]<span class="comment"># ./configure --prefix=/usr/local/erlang</span></span><br></pre></td></tr></table></figure>
+<p>如果遇到如下界面，百度说不用管，那咱们就继续下一步<br><img src="/2020/02/03/CentOS-7-安装-RabbitMQ/erlang_err.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装</span></span><br><span class="line">[root@localhost otp_src_22.0]<span class="comment"># make install</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否安装完成</span></span><br><span class="line">[root@localhost otp_src_22.0]<span class="comment"># cd /usr/local/erlang/</span></span><br><span class="line">[root@localhost erlang]<span class="comment"># ls -l</span></span><br><span class="line">总用量 0</span><br><span class="line">drwxr-xr-x. 2 root root 128 1月  21 15:40 bin</span><br><span class="line">drwxr-xr-x. 3 root root  20 1月  21 15:39 lib</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置 Erlang 环境变量</span></span><br><span class="line">[root@localhost erlang]<span class="comment"># echo 'export PATH=$PATH:/usr/local/erlang/bin' &gt;&gt; /etc/profile</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#刷新环境变量</span></span><br><span class="line">[root@localhost erlang]<span class="comment"># source /etc/profile</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#验证是否成功</span></span><br><span class="line">[root@localhost erlang]<span class="comment"># cd /</span></span><br><span class="line">[root@localhost /]<span class="comment"># erl</span></span><br><span class="line">Erlang/OTP 22 [erts-10.4] [<span class="built_in">source</span>] [64-bit] [smp:1:1] [ds:1:1:10] [async-threads:1] [hipe]</span><br><span class="line"></span><br><span class="line">Eshell V10.4  (abort with ^G)</span><br><span class="line">1&gt; </span><br><span class="line"></span><br><span class="line"><span class="comment">#输入 halt(). 命令退出（没看错，有点）</span></span><br><span class="line">1&gt; </span><br><span class="line">1&gt; halt().</span><br><span class="line">[root@localhost /]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-RabbitMQ-安装"><a href="#4-RabbitMQ-安装" class="headerlink" title="4.RabbitMQ 安装"></a>4.RabbitMQ 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#tar.xz 文件需要命令 xz，没有的话就先安装 </span></span><br><span class="line">[root@localhost /]<span class="comment"># cd /usr/local/</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># yum install -y xz</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#解压</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># xz -d rabbitmq-server-generic-unix-3.7.15.tar.xz  </span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># tar -xvf rabbitmq-server-generic-unix-3.7.15.tar</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#文件夹重命名</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># mv rabbitmq_server-3.7.15  rabbitmq</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#配置 RabbitMQ 环境变量</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># echo 'export PATH=$PATH:/usr/local/rabbitmq/sbin' &gt;&gt; /etc/profile</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#刷新环境变量</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># source /etc/profile</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#验证服务是否安装成功</span></span><br><span class="line"><span class="comment">#服务启动</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmq-server -detached</span></span><br><span class="line">Warning: PID file not written; -detached was passed.</span><br><span class="line"></span><br><span class="line"><span class="comment">#服务状态</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmqctl status</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#服务关闭</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmqctl stop         </span></span><br><span class="line">Stopping and halting node rabbit@localhost ...</span><br></pre></td></tr></table></figure>
+<h2 id="5-安装-WEB-管理界面"><a href="#5-安装-WEB-管理界面" class="headerlink" title="5.安装 WEB 管理界面"></a>5.安装 WEB 管理界面</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmq-plugins enable rabbitmq_management</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#防火墙放开端口 5672 和 15672</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment">#  firewall-cmd --zone=public --add-port=5672/tcp --permanent  </span></span><br><span class="line">success</span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment">#  firewall-cmd --zone=public --add-port=15672/tcp --permanent</span></span><br><span class="line">success</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看防护墙端口是否放开</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># firewall-cmd --query-port=15672/tcp</span></span><br><span class="line">no</span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># firewall-cmd --query-port=5672/tcp </span></span><br><span class="line">no</span><br><span class="line"></span><br><span class="line"><span class="comment">#重启防火墙</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看防护墙端口是否放开</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># firewall-cmd --query-port=5672/tcp</span></span><br><span class="line">yes</span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># firewall-cmd --query-port=15672/tcp</span></span><br><span class="line">yes</span><br></pre></td></tr></table></figure>
+<p>浏览器访问：ip:15672 如下图</p>
+<p><img src="/2020/02/03/CentOS-7-安装-RabbitMQ/rabbitmq_login.png" alt="在这里插入图片描述"></p>
+<p><em>默认账号密码：guest guest（这个账号只允许本机访问）</em></p>
+<h2 id="6-RabbitMQ-用户管理"><a href="#6-RabbitMQ-用户管理" class="headerlink" title="6.RabbitMQ 用户管理"></a>6.RabbitMQ 用户管理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看所有用户</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmqctl list_users</span></span><br><span class="line">Listing users ...</span><br><span class="line">user    tags</span><br><span class="line">guest   [administrator]</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加一个用户和密码</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmqctl add_user charmsongo 123456</span></span><br><span class="line">Adding user <span class="string">"charmsongo"</span> ...</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置权限</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmqctl set_permissions -p "/" charmsongo ".*" ".*" ".*"      </span></span><br><span class="line">Setting permissions <span class="keyword">for</span> user <span class="string">"charmsongo"</span> <span class="keyword">in</span> vhost <span class="string">"/"</span> ...</span><br><span class="line"></span><br><span class="line">查看 charmsongo 权限</span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmqctl list_user_permissions charmsongo</span></span><br><span class="line">Listing permissions <span class="keyword">for</span> user <span class="string">"charmsongo"</span> ...</span><br><span class="line">vhost   configure       write   <span class="built_in">read</span></span><br><span class="line">/       .*      .*      .*</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置 tag 为 administrator</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmqctl set_user_tags charmsongo administrator</span></span><br><span class="line">Setting tags <span class="keyword">for</span> user <span class="string">"charmsongo"</span> to [administrator] ...</span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmqctl list_users</span></span><br><span class="line">Listing users ...</span><br><span class="line">user    tags</span><br><span class="line">charmsongo      [administrator]</span><br><span class="line">guest   [administrator]</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除默认用户（安全起见）</span></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># rabbitmqctl delete_user guest</span></span><br><span class="line">Deleting user <span class="string">"guest"</span> ...</span><br></pre></td></tr></table></figure>
+<h2 id="7-登录验证"><a href="#7-登录验证" class="headerlink" title="7.登录验证"></a>7.登录验证</h2><p>用新账号和密码登录（如果失败，可重启 RabbitMQ 服务）</p>
+<p><img src="/2020/02/03/CentOS-7-安装-RabbitMQ/rabbitmq_config.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTc1MzAx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>结束……</p>
+<blockquote>
+<p>如果有哪些不对的地方烦请指认，先行感谢</p>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/imcharmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.csdn.net/qq_29175301">CSDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://my.oschina.net/charmsongo">OSChina</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.cnblogs.com/charmsongo/">博客园</a></span>
+        <span>/</span>
+        
+        <span><a href="https://542869246.github.io">Felix</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.huasleung.com/">Huas Leung</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            总访问:<span id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+            访客:<span id="busuanzi_value_site_uv"></span>
+        </span>
+        原主题:<a style="text-decoration:none;" target="_Blank" href="https://github.com/aircloud/">aircloud</a>
+        <!--Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>-->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80MTEwMS8xNzYyNg==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>
