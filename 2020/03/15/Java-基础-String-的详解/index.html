@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="charmsongo">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Java 基础 String 的详解 - charmsongo
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> limited time is wasted on interesting things </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>charmsongo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-存储结构"><span class="toc-text">1.存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-常用方法"><span class="toc-text">2.常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-构造方法"><span class="toc-text">2.1.构造方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-equals"><span class="toc-text">2.2.equals()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-compareTo"><span class="toc-text">2.3.compareTo()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-其他重要方法"><span class="toc-text">2.4.其他重要方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-常遇问题"><span class="toc-text">3.常遇问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-String-和-StringBuilder、StringBuffer-的区别"><span class="toc-text">3.1.String 和 StringBuilder、StringBuffer 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-String-为什么用-final-修饰"><span class="toc-text">3.2.String 为什么用 final 修饰</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-JVM-中存储"><span class="toc-text">3.3.JVM 中存储</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> limited time is wasted on interesting things </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Java 基础 String 的详解
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-03-15 16:18:24</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Java" title="Java">Java</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#String" title="String">String</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#String源码" title="String源码">String源码</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><blockquote>
+<p>String 算是 Java 源码中先要学习的，今天就从源码的角度来重新认识一下</p>
+</blockquote>
+<h2 id="1-存储结构"><a href="#1-存储结构" class="headerlink" title="1.存储结构"></a>1.存储结构</h2><p>看主流的 JDK 版本 1.8 ，String 内部实际存储结构为 char 数组，源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** The value is used for character storage. */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span> value[];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Cache the hash code for the string */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> hash; <span class="comment">// Default to 0</span></span><br><span class="line">    <span class="comment">//其他内容......</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-常用方法"><a href="#2-常用方法" class="headerlink" title="2.常用方法"></a>2.常用方法</h2><h3 id="2-1-构造方法"><a href="#2-1-构造方法" class="headerlink" title="2.1.构造方法"></a>2.1.构造方法</h3><p>其中 StringBuffer 和 StringBuilder 为参数的构造函数用的比较少，但也要知道<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * String 为参数的构造方法</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>  original</span></span><br><span class="line"><span class="comment">    *        A &#123;<span class="doctag">@code</span> String&#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(String original)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.value = original.value;</span><br><span class="line">       <span class="keyword">this</span>.hash = original.hash;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * char[] 为参数构造方法</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>  value</span></span><br><span class="line"><span class="comment">    *         The initial value of the string</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">char</span> value[])</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.value = Arrays.copyOf(value, value.length);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * StringBuffer 为参数的构造方法</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>  buffer</span></span><br><span class="line"><span class="comment">    *         A &#123;<span class="doctag">@code</span> StringBuffer&#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(StringBuffer buffer)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">synchronized</span>(buffer) &#123;</span><br><span class="line">           <span class="keyword">this</span>.value = Arrays.copyOf(buffer.getValue(), buffer.length());</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * StringBuilder 为参数的构造方法</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>   builder</span></span><br><span class="line"><span class="comment">    *          A &#123;<span class="doctag">@code</span> StringBuilder&#125;</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@since</span>  1.5</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(StringBuilder builder)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.value = Arrays.copyOf(builder.getValue(), builder.length());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-2-equals"><a href="#2-2-equals" class="headerlink" title="2.2.equals()"></a>2.2.equals()</h3><p>String 中 equals() 是比较两个字符串的值是否相等，== 才是比较字符串的引用是否相等，equals() 重写了父类 Object 方法，传参也为 Object 类型，方法中会通过 instanceof 判断，是 String 类型才进行下一步。</p>
+<p>这里提一下，Object 父类中 equals() 和 == 对于引用类型的作用是一样的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  anObject</span></span><br><span class="line"><span class="comment">    *         The object to compare this &#123;<span class="doctag">@code</span> String&#125; against</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>  &#123;<span class="doctag">@code</span> true&#125; if the given object represents a &#123;<span class="doctag">@code</span> String&#125;</span></span><br><span class="line"><span class="comment">    *          equivalent to this string, &#123;<span class="doctag">@code</span> false&#125; otherwise</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@see</span>  #compareTo(String)</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@see</span>  #equalsIgnoreCase(String)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object anObject)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (<span class="keyword">this</span> == anObject) &#123;<span class="comment">// 对象引用相同直接返回 true</span></span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (anObject <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">           String anotherString = (String)anObject;</span><br><span class="line">           <span class="keyword">int</span> n = value.length;</span><br><span class="line">           <span class="keyword">if</span> (n == anotherString.value.length) &#123;</span><br><span class="line">               <span class="keyword">char</span> v1[] = value;</span><br><span class="line">               <span class="keyword">char</span> v2[] = anotherString.value;</span><br><span class="line">               <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">               <span class="keyword">while</span> (n-- != <span class="number">0</span>) &#123;</span><br><span class="line">                   <span class="keyword">if</span> (v1[i] != v2[i])<span class="comment">//转化为字符数组,对比每个字符，有一个不相同就是 fasle</span></span><br><span class="line">                       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                   i++;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>有一个和 equels 相似的方法 <strong>equalsIgnoreCase(String)</strong>，忽略大小写对比，传参为 String 类型</p>
+<h3 id="2-3-compareTo"><a href="#2-3-compareTo" class="headerlink" title="2.3.compareTo()"></a>2.3.compareTo()</h3><p> compareTo() 和 equels() 处理方式类似，都是字符对比，不同的是，equels() 比较两字符串相同返回 true，不相同返回 false；compareTo() 比较两字符串相同返回 0，不相同返回 其他 int 类型数值。并且 compareTo() 只能接收 String 类型。</p>
+<p>还有一个和 compareTo() 比较类似的方法 compareToIgnoreCase()，用于忽略大小写后比较两个字符串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>   anotherString   the &#123;<span class="doctag">@code</span> String&#125; to be compared.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>  the value &#123;<span class="doctag">@code</span> 0&#125; if the argument string is equal to</span></span><br><span class="line"><span class="comment">    *          this string; a value less than &#123;<span class="doctag">@code</span> 0&#125; if this string</span></span><br><span class="line"><span class="comment">    *          is lexicographically less than the string argument; and a</span></span><br><span class="line"><span class="comment">    *          value greater than &#123;<span class="doctag">@code</span> 0&#125; if this string is</span></span><br><span class="line"><span class="comment">    *          lexicographically greater than the string argument.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(String anotherString)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> len1 = value.length;</span><br><span class="line">       <span class="keyword">int</span> len2 = anotherString.value.length;</span><br><span class="line">       <span class="keyword">int</span> lim = Math.min(len1, len2);</span><br><span class="line">       <span class="keyword">char</span> v1[] = value;</span><br><span class="line">       <span class="keyword">char</span> v2[] = anotherString.value;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">while</span> (k &lt; lim) &#123;</span><br><span class="line">           <span class="keyword">char</span> c1 = v1[k];</span><br><span class="line">           <span class="keyword">char</span> c2 = v2[k];</span><br><span class="line">           <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">               <span class="keyword">return</span> c1 - c2;</span><br><span class="line">           &#125;</span><br><span class="line">           k++;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> len1 - len2;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-其他重要方法"><a href="#2-4-其他重要方法" class="headerlink" title="2.4.其他重要方法"></a>2.4.其他重要方法</h3><ul>
+<li>indexOf()：查询字符串首次出现的下标位置 </li>
+<li>lastIndexOf()：查询字符串最后出现的下标位置</li>
+<li>contains()：查询字符串中是否包含另一个字符串 </li>
+<li>toLowerCase()：把字符串全部转换成小写</li>
+<li>toUpperCase()：把字符串全部转换成大写 </li>
+<li>length()：查询字符串的长度 </li>
+<li>trim()：去掉字符串首尾空格</li>
+<li>replace()：替换字符串中的某些字符 </li>
+<li>split()：把字符串分割并返回字符串数组 </li>
+<li>join()：把字符串数组转为字符串</li>
+</ul>
+<h2 id="3-常遇问题"><a href="#3-常遇问题" class="headerlink" title="3.常遇问题"></a>3.常遇问题</h2><h3 id="3-1-String-和-StringBuilder、StringBuffer-的区别"><a href="#3-1-String-和-StringBuilder、StringBuffer-的区别" class="headerlink" title="3.1.String 和 StringBuilder、StringBuffer 的区别"></a>3.1.String 和 StringBuilder、StringBuffer 的区别</h3><p>String 是不可变的，在字符串拼接的时候使用 String 会很耗性能，因此有了 StringBuilder 和 StringBuffer，它们有 2 方法 append 和 insert 可以实现字符串拼接，唯一不同的是 StringBuffer 使用 synchronized 来保证线程安全</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//StringBuffer 截取片段，具体可以看 StringBuffer 类源码</span></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">append</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        toStringCache = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">super</span>.append(String.valueOf(obj));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">append</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        toStringCache = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">super</span>.append(str);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他......</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> StringIndexOutOfBoundsException &#123;<span class="doctag">@inheritDoc</span>&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">insert</span><span class="params">(<span class="keyword">int</span> offset, Object obj)</span> </span>&#123;</span><br><span class="line">        toStringCache = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">super</span>.insert(offset, String.valueOf(obj));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> StringIndexOutOfBoundsException &#123;<span class="doctag">@inheritDoc</span>&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">insert</span><span class="params">(<span class="keyword">int</span> offset, String str)</span> </span>&#123;</span><br><span class="line">        toStringCache = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">super</span>.insert(offset, str);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="comment">//其他......</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//StringBuilder截取片段，具体可以看 StringBuilder类源码</span></span><br><span class="line"></span><br><span class="line"> 	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StringBuilder <span class="title">append</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> append(String.valueOf(obj));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StringBuilder <span class="title">append</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.append(str);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//其他......</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> StringIndexOutOfBoundsException &#123;<span class="doctag">@inheritDoc</span>&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StringBuilder <span class="title">insert</span><span class="params">(<span class="keyword">int</span> offset, Object obj)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.insert(offset, obj);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> StringIndexOutOfBoundsException &#123;<span class="doctag">@inheritDoc</span>&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StringBuilder <span class="title">insert</span><span class="params">(<span class="keyword">int</span> offset, String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.insert(offset, str);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他......</span></span><br></pre></td></tr></table></figure>
+<p>StringBuffer 保证线程安全，所以性能不是很高,JDK 1.5 就有了 StringBuilder</p>
+<h3 id="3-2-String-为什么用-final-修饰"><a href="#3-2-String-为什么用-final-修饰" class="headerlink" title="3.2.String 为什么用 final 修饰"></a>3.2.String 为什么用 final 修饰</h3><p>使用 final 修饰的第一个好处是<strong>安全</strong>；第二个好处是<strong>高效</strong>,例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"java"</span>;</span><br><span class="line">String s2 = <span class="string">"java"</span>;</span><br></pre></td></tr></table></figure>
+<p>只有字符串是不可变时，我们才能实现字符串常量池，字符串常量池可以为我们缓存字符串，提高程序的运行效率，如下图所示：<br><img src="/2020/03/15/Java-基础-String-的详解/final_a.png" alt="在这里插入图片描述"></p>
+<h3 id="3-3-JVM-中存储"><a href="#3-3-JVM-中存储" class="headerlink" title="3.3.JVM 中存储"></a>3.3.JVM 中存储</h3><p>String 常用的 2 种创建方式，有 String a1 = “java” 和 String a2 = new Strring(“java”),但他们在内存中的存放方式不同，JDK1.8 中创建啊变量 a1，会先从常量池中找字符串 “java”,如果有直接返回，如果没有则先在常量池中创建该字符串再返回，而变量 a2会直接在堆内存上创建，a2 调用方法 intern() 会把字符串保存到常量池，例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String a1 = <span class="string">"java"</span>;</span><br><span class="line">String a2 = <span class="keyword">new</span> Strring(<span class="string">"java"</span>);</span><br><span class="line">String a3 = <span class="string">"a2.intern();</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">System.out.println(a1 == a2); // false</span></span><br><span class="line"><span class="string">System.out.println(a1 == a3); // true</span></span><br></pre></td></tr></table></figure>
+<p>JVM 存储位置如图<br><img src="/2020/03/15/Java-基础-String-的详解/jvm_1.png" alt="在这里插入图片描述"><br>PS:JDK 1.7 之后把永生代换成的元空间，把字符串常量池从方法区移到了 Java 堆上。</p>
+<p>结束……</p>
+<blockquote>
+<p>如果有哪些不对的地方烦请指认，先行感谢</p>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/imcharmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.csdn.net/qq_29175301">CSDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://my.oschina.net/charmsongo">OSChina</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.cnblogs.com/charmsongo/">博客园</a></span>
+        <span>/</span>
+        
+        <span><a href="https://542869246.github.io">Felix</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.huasleung.com/">Huas Leung</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            总访问:<span id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+            访客:<span id="busuanzi_value_site_uv"></span>
+        </span>
+        原主题:<a style="text-decoration:none;" target="_Blank" href="https://github.com/aircloud/">aircloud</a>
+        <!--Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>-->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80MTEwMS8xNzYyNg==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>

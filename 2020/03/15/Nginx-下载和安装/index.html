@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="charmsongo">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Nginx 下载和安装 - charmsongo
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> limited time is wasted on interesting things </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>charmsongo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境"><span class="toc-text">环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Nginx-简介"><span class="toc-text">1.Nginx 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-下载"><span class="toc-text">2.下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-安装"><span class="toc-text">3.安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-安装依赖"><span class="toc-text">3.1.安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-上传并解压"><span class="toc-text">3.2.上传并解压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-编译安装"><span class="toc-text">3.3.编译安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Nginx-常用命令"><span class="toc-text">3.4 Nginx 常用命令</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> limited time is wasted on interesting things </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Nginx 下载和安装
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-03-15 16:18:31</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#CentOS" title="CentOS">CentOS</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Nginx" title="Nginx">Nginx</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><blockquote>
+<p>系统环境：CentOS 7.7<br>Nginx：nginx/1.17.9</p>
+</blockquote>
+<h2 id="1-Nginx-简介"><a href="#1-Nginx-简介" class="headerlink" title="1.Nginx 简介"></a>1.Nginx 简介</h2><p>Nginx 是一个高性能的 HTTP 和反向代理 Web 服务器，同时也提供了 IMAP/POP3/SMTP 服务。</p>
+<p>Nginx 是由伊戈尔·赛索耶夫为俄罗斯访问量第二的 Rambler.ru 站点开发的，，因它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。</p>
+<p>Nginx 是一款轻量级的 Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，在 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 Nginx 的并发能力在同类型的网页服务器中表现较好，中国大陆使用 Nginx 网站用户有：百度、京东、新浪、网易、腾讯、淘宝等。</p>
+<h2 id="2-下载"><a href="#2-下载" class="headerlink" title="2.下载"></a>2.下载</h2><p>官网下载，使用世界五百强科技企业【百度】搜索引擎搜 Nginx，目前选择最新版本 nginx-1.17.9.tar.gz<br>步骤如下：<br><img src="/2020/03/15/Nginx-下载和安装/nginx_1.png" alt="在这里插入图片描述"><br><img src="/2020/03/15/Nginx-下载和安装/nginx_2.png" alt="在这里插入图片描述"><br><img src="/2020/03/15/Nginx-下载和安装/ngnix_3.png" alt="在这里插入图片描述"></p>
+<h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2><h3 id="3-1-安装依赖"><a href="#3-1-安装依赖" class="headerlink" title="3.1.安装依赖"></a>3.1.安装依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ]<span class="comment"># yum -y install gcc pcre-devel zlib-devel openssl openssl-devel</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2-上传并解压"><a href="#3-2-上传并解压" class="headerlink" title="3.2.上传并解压"></a>3.2.上传并解压</h3><p>可以通过工具 Winscp，把下载好的 nginx-1.17.9.tar.gz 上传到服务器跟目录，再解压<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># tar -zxvf nginx-1.17.9.tar.gz</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-3-编译安装"><a href="#3-3-编译安装" class="headerlink" title="3.3.编译安装"></a>3.3.编译安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># cd nginx-1.17.9</span></span><br><span class="line">[root@localhost nginx-1.17.9]<span class="comment"># ./configure</span></span><br><span class="line">[root@localhost nginx-1.17.9]<span class="comment"># make &amp;&amp; make install</span></span><br></pre></td></tr></table></figure>
+<p>默认安装位置在 ：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx]<span class="comment"># pwd</span></span><br><span class="line">/usr/<span class="built_in">local</span>/nginx</span><br></pre></td></tr></table></figure></p>
+<p>服务启动：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx]<span class="comment"># /usr/local/nginx/sbin/nginx </span></span><br><span class="line">[root@localhost nginx]<span class="comment"># ps -ef | grep nginx</span></span><br><span class="line">root      39801      1  0 15:20 ?        00:00:00 nginx: master process /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span><br><span class="line">nobody    39802  39801  0 15:20 ?        00:00:00 nginx: worker process</span><br><span class="line">root      39804  37153  0 15:20 pts/0    00:00:00 grep --color=auto nginx</span><br></pre></td></tr></table></figure></p>
+<p>现在已经起来了，但是 Linux 防火墙默认大部分端口是没开放的，现在需要放开，Nginx 端口 80(默认)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看防火墙状态</span></span><br><span class="line">[root@localhost nginx]<span class="comment"># firewall-cmd --state</span></span><br><span class="line">running</span><br><span class="line"><span class="comment">#放开 80 端口，（--permanent永久生效，没有此参数重启后失效）</span></span><br><span class="line">[root@localhost nginx]<span class="comment"># firewall-cmd --zone=public --add-port=80/tcp --permanent</span></span><br><span class="line">success</span><br><span class="line"><span class="comment">#重新加载防火墙信息</span></span><br><span class="line">[root@localhost nginx]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+<p>出现下图说明 Nginx 服务安装成功<br><img src="/2020/03/15/Nginx-下载和安装/ngnix_4.png" alt="在这里插入图片描述"></p>
+<h3 id="3-4-Nginx-常用命令"><a href="#3-4-Nginx-常用命令" class="headerlink" title="3.4 Nginx 常用命令"></a>3.4 Nginx 常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost sbin]<span class="comment"># pwd</span></span><br><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin</span><br><span class="line"><span class="comment">#查看 Nginx 版本</span></span><br><span class="line">[root@localhost sbin]<span class="comment"># ./nginx -V</span></span><br><span class="line">nginx version: nginx/1.17.9</span><br><span class="line">built by gcc 4.8.5 20150623 (Red Hat 4.8.5-39) (GCC) </span><br><span class="line">configure arguments:</span><br><span class="line"><span class="comment">#关闭 Nginx </span></span><br><span class="line">[root@localhost sbin]<span class="comment"># ./nginx -s stop</span></span><br><span class="line"><span class="comment">#开启 Nginx </span></span><br><span class="line">[root@localhost sbin]<span class="comment"># ./nginx</span></span><br><span class="line"><span class="comment">#重新加载 Nginx 配置</span></span><br><span class="line">[root@localhost sbin]<span class="comment"># ./nginx -s reload</span></span><br><span class="line"><span class="comment"># Nginx 配置文件</span></span><br><span class="line">[root@localhost sbin]<span class="comment"># vi /usr/local/nginx/conf/nginx.conf</span></span><br></pre></td></tr></table></figure>
+<p>更多的配置在 nginx.conf 中修改，Nginx 还可以和 FastDFS 做分布式文件系统部署，更多的功能继续尝试中……</p>
+<blockquote>
+<p>如果有哪些不对的地方烦请指认，先行感谢</p>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/imcharmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/charmsongo">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://blog.csdn.net/qq_29175301">CSDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://my.oschina.net/charmsongo">OSChina</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.cnblogs.com/charmsongo/">博客园</a></span>
+        <span>/</span>
+        
+        <span><a href="https://542869246.github.io">Felix</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.huasleung.com/">Huas Leung</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            总访问:<span id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+            访客:<span id="busuanzi_value_site_uv"></span>
+        </span>
+        原主题:<a style="text-decoration:none;" target="_Blank" href="https://github.com/aircloud/">aircloud</a>
+        <!--Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>-->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80MTEwMS8xNzYyNg==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>
